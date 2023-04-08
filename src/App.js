@@ -1,8 +1,13 @@
+import ThemeState from "../src/context/Theme/ThemeState";
+import Assembler from "./Assembler";
+
 
 function App() {
   return (
     <div className="App">
-    main
+       <ThemeState>
+        <Assembler />
+      </ThemeState>
     </div>
   );
 }
