@@ -25,7 +25,7 @@ const Assembler = () => {
     },
     {
       route: RouteConstants.LANDING_PAGE,
-      component: user.auth ? <Home /> : <Login />,
+      component: user.auth ? <Home /> : <Home />, // Home : Login
       access: RoleConstants.ALL,
     },
     {
