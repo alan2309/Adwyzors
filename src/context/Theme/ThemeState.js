@@ -1,7 +1,7 @@
 import { ThemeContext } from "./ThemeContext";
 const ThemeState = (props) => {
-  let bgColor = "#BBDFF9";
-  let primaryColor = "#263740";
+  let bgColor = "#F5F5F5";
+  let primaryColor = "#FF8628";
   let btnColor = "#3E465E";
   let secondaryColor = "#CBD1E4";
   let pastdueColor = "#C00000";
