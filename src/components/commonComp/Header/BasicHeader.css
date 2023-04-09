@@ -1,0 +1,8 @@
+.navbar-brand {
+  font-family: Merriweather sans-serif !important;
+}
+.navbar {
+  background-color: #f5faf5 !important;
+  /*--bs-navbar-brand-padding-y:"0px" !important;
+    padding: 5px 0 !important;*/
+}

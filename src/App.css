@@ -1,27 +1,27 @@
-*{
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", "Poppins";
 }
 
-.bg-grey{
-  background-color: #F2F3F5!important;
+.bg-grey {
+  background-color: #f2f3f5 !important;
 }
 
-.bg-white{
-  background-color: #FFFFFF!important;
+.bg-white {
+  background-color: #ffffff !important;
 }
 
-.fw-300{
-  font-weight: 300!important;
+.fw-300 {
+  font-weight: 300 !important;
 }
 
-.fw-400{
-  font-weight: 400!important;
+.fw-400 {
+  font-weight: 400 !important;
 }
 
-.fw-700{
-  font-weight: 700!important;
+.fw-700 {
+  font-weight: 700 !important;
 }
 
-.fw-900{
-  font-weight: 900!important;
+.fw-900 {
+  font-weight: 900 !important;
 }

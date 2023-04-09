@@ -1,19 +1,21 @@
 import { useContext } from "react";
+import { Col, Row } from "react-bootstrap";
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
+    Navigate,
+    Route,
+    BrowserRouter as Router,
+    Routes,
 } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import { AuthContext } from "./context/AuthContext";
-import RouteConstants from "./constants/RouteConstants";
-import RoleConstants from "./constants/RoleConstants";
-import Login from "./pages/common/login/Login";
-import Signup from "./pages/common/Signup";
-import Home from "./pages/common/Home";
-import Messaging from "./pages/common/Messaging";
+import BasicHeader from "./components/commonComp/Header/BasicHeader";
 import Header from "./components/commonComp/Header/Header";
+import RoleConstants from "./constants/RoleConstants";
+import RouteConstants from "./constants/RouteConstants";
+import { AuthContext } from "./context/AuthContext";
+import Home from "./pages/common/Home";
+import LandingPage from "./pages/common/LandingPage/LandingPage";
+import Messaging from "./pages/common/Messaging";
+import Signup from "./pages/common/SignUp/Signup";
+import Login from "./pages/common/login/Login";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
@@ -25,6 +27,11 @@ const Assembler = () => {
     },
     {
       route: RouteConstants.LANDING_PAGE,
+      component: <LandingPage />,
+      access: RoleConstants.ALL,
+    },
+    {
+      route: RouteConstants.HOME_PAGE,
       component: user.auth ? <Home /> : <Home />, // Home : Login
       access: RoleConstants.ALL,
     },
@@ -45,7 +52,7 @@ const Assembler = () => {
   ];
   return (
     <div>
-      <Header />
+      {user.auth ? <Header /> : <BasicHeader />}
       <Router>
         <Routes>
           {routes.map((route, key) => (

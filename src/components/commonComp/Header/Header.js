@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap";
 import Home from "../../img/Home.svg";
 import Jobs from "../../img/Jobs.svg";
@@ -6,12 +6,16 @@ import Profile from "../../img/Profile.svg";
 import Logo from "../../img/logo.svg";
 import Messages from "../../img/messages.svg";
 import Notification from "../../img/noti.svg";
+import logout from "../../img/logout.svg";
 import "./Header.css";
+import { AuthContext } from "../../../context/AuthContext";
 
 function Header() {
+  const { dispatch } = useContext(AuthContext);
+
   return (
     <Navbar sticky="top" expand="lg">
-      <Container style={{ margin: "0 15%" }}>
+      <Container style={{ margin: "0 10%" }}>
         <Navbar.Brand
           href="#home"
           style={{
@@ -78,6 +82,20 @@ function Header() {
                     alt="img"
                     src={Profile}
                   />
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link
+                  onClick={async (e) => {
+                    await dispatch({ type: "LOGOUT", payload: null });
+                    window.location.assign("/");
+                  }}
+                >
+                  <img
+                    style={{ width: "28px", height: "28px" }}
+                    alt="img"
+                    src={logout}
+                  />{" "}
                 </Nav.Link>
               </Col>
             </Row>

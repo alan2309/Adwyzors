@@ -1,11 +1,11 @@
 import React from "react";
-import LoginBox from "./LoginBox";
-import styles from "./Login.module.css";
 import { Col, Row } from "react-bootstrap";
-import LoginImg from "../../../components/img/Login.svg";
 import Background from "../../../components/img/Background.svg";
+import LoginImg from "../../../components/img/Login.svg";
+import SignUpBox from "./SignUpBox";
+import styles from "./Signup.module.css";
 
-function Login() {
+function Signup() {
   return (
     <div
       style={{
@@ -17,15 +17,15 @@ function Login() {
     >
       <Row style={{}}>
         <Col>
-          <img className={styles.loginimg} src={LoginImg} alt="" />
+          <img className={styles.signupimg} src={LoginImg} alt="" />
         </Col>
         <Col>
           {" "}
-          <LoginBox />
+          <SignUpBox />
         </Col>
       </Row>
     </div>
   );
 }
 
-export default Login;
+export default Signup;
