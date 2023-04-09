@@ -1,0 +1,27 @@
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
+.bg-grey{
+  background-color: #F2F3F5!important;
+}
+
+.bg-white{
+  background-color: #FFFFFF!important;
+}
+
+.fw-300{
+  font-weight: 300!important;
+}
+
+.fw-400{
+  font-weight: 400!important;
+}
+
+.fw-700{
+  font-weight: 700!important;
+}
+
+.fw-900{
+  font-weight: 900!important;
+}
