@@ -9,7 +9,7 @@ import { Row, Col } from "react-bootstrap";
 import { AuthContext } from "./context/AuthContext";
 import RouteConstants from "./constants/RouteConstants";
 import RoleConstants from "./constants/RoleConstants";
-import Login from "./pages/common/Login";
+import Login from "./pages/common/login/Login";
 import Signup from "./pages/common/Signup";
 import Home from "./pages/common/Home";
 import Messaging from "./pages/common/Messaging";
