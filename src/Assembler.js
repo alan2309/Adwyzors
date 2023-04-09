@@ -9,11 +9,11 @@ import { Row, Col } from "react-bootstrap";
 import { AuthContext } from "./context/AuthContext";
 import RouteConstants from "./constants/RouteConstants";
 import RoleConstants from "./constants/RoleConstants";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Home from "./pages/Home";
-import Messaging from "./pages/Messaging";
-import Header from "./pages/common/Header/Header";
+import Login from "./pages/common/Login";
+import Signup from "./pages/common/Signup";
+import Home from "./pages/common/Home";
+import Messaging from "./pages/common/Messaging";
+import Header from "./components/commonComp/Header/Header";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
