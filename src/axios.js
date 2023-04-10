@@ -39,10 +39,10 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error);
     }
     console.log(error.response);
-    if (error.response.status === 400) {
-      window.location.href = "/";
-      sessionStorage.clear();
-    }
+    //if (error.response.status === 400) {
+    //  window.location.href = "/";
+    //  sessionStorage.clear();
+    //}
     if (
       error.response.data.code === "token_not_valid" &&
       error.response.status === 401 &&

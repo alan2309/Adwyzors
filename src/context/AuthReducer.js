@@ -2,6 +2,31 @@ import RoleConstants from "../constants/RoleConstants";
 
 const AuthReducer = (state, action) => {
   switch (action.type) {
+    case "REGISTER_START":
+      return {
+        user: {
+          auth: false,
+          userRole: RoleConstants.NONE,
+        },
+        isFetching: true,
+      };
+    case "REGISTER_SUCCESS":
+      return {
+        user: {
+          auth: false,
+          userRole: RoleConstants.NONE,
+        }, //Set user role and auth
+        isFetching: false,
+      };
+    case "REGISTER_FAILURE":
+      return {
+        user: {
+          auth: false,
+          userRole: RoleConstants.NONE,
+        },
+        isFetching: false,
+      };
+
     case "LOGIN_START":
       return {
         user: {
@@ -9,13 +34,11 @@ const AuthReducer = (state, action) => {
           userRole: RoleConstants.NONE,
         },
         isFetching: true,
-        error: false,
       };
     case "LOGIN_SUCCESS":
       return {
         user: action.payload, //Set user role and auth
         isFetching: false,
-        error: false,
       };
     case "LOGIN_FAILURE":
       return {
@@ -24,7 +47,6 @@ const AuthReducer = (state, action) => {
           userRole: RoleConstants.NONE,
         },
         isFetching: false,
-        error: true,
       };
     case "FOLLOW":
       return {
@@ -45,13 +67,13 @@ const AuthReducer = (state, action) => {
         },
       };
     case "LOGOUT":
+      localStorage.clear();
       return {
         user: {
           auth: false,
           userRole: RoleConstants.NONE,
         },
         isFetching: false,
-        error: false,
       };
     default:
       return state;

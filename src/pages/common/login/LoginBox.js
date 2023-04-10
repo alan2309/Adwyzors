@@ -14,7 +14,7 @@ function LoginBox() {
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID_API_KEY;
   const email = useRef();
   const password = useRef();
-  const { dispatch, error } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const responseGoogle = async (res) => {
     let profileObj = await jwt_decode(res.credential);
     console.log(profileObj);
@@ -30,14 +30,15 @@ function LoginBox() {
   };
   const submit = async (e) => {
     e.preventDefault();
-    await loginCall(
+    const err = await loginCall(
       { email: email.current.value, password: password.current.value },
       dispatch
     );
-    if (!error) {
+    if (!err) {
       navigate("/home");
     } else {
-      console.log(error);
+      console.log(err);
+      alert(err.response.data.message);
     }
     //toastrFunc("error", "Attempt to log in failed");
   };

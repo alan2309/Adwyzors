@@ -8,7 +8,6 @@ const INITIAL_STATE = {
     userRole: RoleConstants.NONE,
   },
   isFetching: false,
-  error: false,
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -25,7 +24,6 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         user: state.user,
         isFetching: state.isFetching,
-        error: state.error,
         dispatch,
       }}
     >
