@@ -1,20 +1,16 @@
 import React, { useContext } from "react";
 import { Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap";
-import Home from "../../img/Home.svg";
-import Jobs from "../../img/Jobs.svg";
-import Profile from "../../img/Profile.svg";
-import Logo from "../../img/logo.svg";
-import Messages from "../../img/messages.svg";
-import Notification from "../../img/noti.svg";
-import logout from "../../img/logout.svg";
-import "./Header.css";
+import { FiLogOut } from "react-icons/fi";
+import { HiHome, HiOutlineBriefcase } from "react-icons/hi";
 import { AuthContext } from "../../../context/AuthContext";
-
+import { ThemeContext } from "../../../context/Theme/ThemeContext";
+import Logo from "../../img/logo.svg";
 function Header() {
   const { dispatch } = useContext(AuthContext);
+  const { primaryColor } = useContext(ThemeContext);
 
   return (
-    <Navbar sticky="top" expand="lg">
+    <Navbar sticky="top" expand="lg" style={{ backgroundColor: "white" }}>
       <Container style={{ margin: "0 10%" }}>
         <Navbar.Brand
           href="#home"
@@ -37,51 +33,49 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto topnav-centered">
-            <Row>
-              <Col>
+            <Row
+              style={{
+                float: "none",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                gap: "12px",
+              }}
+            >
+              <Col className="d-flex gap-2">
                 <Nav.Link href="#features">
-                  <img
-                    style={{ width: "28px", height: "28px" }}
-                    alt="img"
-                    src={Home}
-                  />
+                  <HiHome size={28} color={primaryColor} />
+                </Nav.Link>
+              </Col>
+              <Col className="d-flex" style={{ marign: "0 113px" }}>
+                <Nav.Link href="#features">
+                  <HiOutlineBriefcase size={28} color="#3f5e60" />
+                </Nav.Link>
+              </Col>
+              <Col className="d-flex" style={{ gap: "23px" }}>
+                <Nav.Link href="#features">
+                  <i
+                    className="fa-regular fa-comment-dots fs-4"
+                    style={{ color: "#3f5e60" }}
+                  ></i>
                 </Nav.Link>
               </Col>
               <Col>
                 <Nav.Link href="#features">
-                  <img
-                    style={{ width: "28px", height: "28px" }}
-                    alt="img"
-                    src={Jobs}
-                  />
-                </Nav.Link>
-              </Col>
-              <Col>
-                <Nav.Link href="#features">
-                  <img
-                    style={{ width: "28px", height: "28px" }}
-                    alt="img"
-                    src={Messages}
-                  />
-                </Nav.Link>
-              </Col>
-              <Col>
-                <Nav.Link href="#features">
-                  <img
-                    style={{ width: "40px", height: "28px" }}
-                    alt="img"
-                    src={Notification}
-                  />
+                  <i
+                    className="fa-regular fa-bell fs-4"
+                    style={{ color: "#3f5e60" }}
+                  ></i>
                 </Nav.Link>
               </Col>
 
               <Col>
                 <Nav.Link href="#features">
-                  <img
-                    style={{ width: "28px", height: "28px" }}
-                    alt="img"
-                    src={Profile}
-                  />
+                  <i
+                    className="fa-regular fa-user fs-4"
+                    style={{ color: "#3f5e60" }}
+                  ></i>
                 </Nav.Link>
               </Col>
               <Col>
@@ -91,11 +85,7 @@ function Header() {
                     window.location.assign("/");
                   }}
                 >
-                  <img
-                    style={{ width: "28px", height: "28px" }}
-                    alt="img"
-                    src={logout}
-                  />{" "}
+                  <FiLogOut size={28} color="#3f5e60" />
                 </Nav.Link>
               </Col>
             </Row>

@@ -2,16 +2,17 @@ import React from "react";
 import { Container, Navbar } from "react-bootstrap";
 import Logo from "../../img/logo.svg";
 
-import "./BasicHeader.css";
-
 function BasicHeader() {
   return (
-    <Navbar className="transparent navbar-inverse">
+    <Navbar
+      className="transparent navbar-inverse"
+      style={{ backgroundColor: "#f5faf5" }}
+    >
       <Container style={{ margin: "0 3%" }} className="navbar-inner">
         <Navbar.Brand
           href="#home"
           style={{
-            fontFamily: "Merriweather sans-serif",
+            fontFamily: "Merriweather",
             fontStyle: "normal",
             fontWeight: "400",
             fontSize: "35px",
