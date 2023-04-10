@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import {
-    Navigate,
-    Route,
-    BrowserRouter as Router,
-    Routes,
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
 } from "react-router-dom";
 import BasicHeader from "./components/commonComp/Header/BasicHeader";
 import Header from "./components/commonComp/Header/Header";
