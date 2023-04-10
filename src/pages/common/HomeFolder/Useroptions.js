@@ -12,10 +12,10 @@ const Useroptions = () => {
   ];
 
   return (
-    <Container className='p-3 px-4'>
+    <Container className='p-3 px-4 d-flex flex-column gap-2'>
       {
         options.map((item, key) => (
-          <Row key={key} className={cx('py-1', styles.objCol)}>
+          <Row key={key} className={cx('', styles.objCol)}>
             <Col lg={1} className='py-1'>
               {item.icon}
             </Col>
