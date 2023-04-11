@@ -14,6 +14,10 @@ body{
   background-color: #ffffff !important;
 }
 
+.col-darkGrey {
+  color: #28363D;
+}
+
 .fw-300 {
   font-weight: 300 !important;
 }

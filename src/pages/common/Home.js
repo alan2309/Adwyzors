@@ -5,6 +5,7 @@ import HomeContainer from "./HomeFolder/HomeContainer";
 import Useroptions from "./HomeFolder/Useroptions";
 import HomeDiscussion from "./HomeFolder/HomeDiscussion";
 import TopInput from "./HomeFolder/TopInput";
+import HomeFeed from "./HomeFolder/HomeFeed";
 
 function Home() {
   return (
@@ -31,6 +32,10 @@ function Home() {
 
             <HomeContainer>
               <TopInput />
+            </HomeContainer>
+
+            <HomeContainer>
+              <HomeFeed />
             </HomeContainer>
 
           </Col>
