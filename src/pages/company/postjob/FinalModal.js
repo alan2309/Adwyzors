@@ -17,11 +17,11 @@ function FinalModal({lgShow,setLgShow,job}) {
             Confirm Details
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{height:"80vh", overflowY:"scroll"}}>
           <Row>
             <Col md={6}>
         <Form>
-      <Form.Group className="mb-3" controlId="jobtitle">
+        <Form.Group className="mb-3" controlId="jobtitle">
         <Form.Label>Job title</Form.Label>
         <Form.Control type="text" placeholder="" name='title' value={job.title}/>
       </Form.Group>
@@ -38,8 +38,13 @@ function FinalModal({lgShow,setLgShow,job}) {
 
       <Form.Group className="mb-3" controlId="location">
         <Form.Label>Company Location</Form.Label>
-        <Form.Control type="text" placeholder="" name='location' value={job.location}/>
+        <Form.Control type="text" placeholder="" name='location' value={job.location} />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="deadline">
+        <Form.Label>Application Deadline</Form.Label>
+        <Form.Control type="date" placeholder="" name='deadline' value={job.deadline}/>
+      </Form.Group>
+      
       <Button variant="primary" style={{backgroundColor:primaryColor,border:"none"}}>
         Next
       </Button>

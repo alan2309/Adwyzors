@@ -18,6 +18,7 @@ import Signup from "./pages/common/SignUp/Signup";
 import Login from "./pages/common/login/Login";
 import Profile from './pages/common/Profile/Profile'
 import PostJob from "./pages/company/postjob/PostJob";
+import Job from "./pages/common/Job/Job";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
@@ -25,11 +26,6 @@ const Assembler = () => {
     {
       route: RouteConstants.LOGIN,
       component: <Login />,
-      access: RoleConstants.ALL,
-    },
-    {
-      route: RouteConstants.PROFILE_PAGE,
-      component: <Profile />,
       access: RoleConstants.ALL,
     },
     {
@@ -57,9 +53,19 @@ const Assembler = () => {
       access: RoleConstants.EMPLOYEE,
     },
     {
+      route: RouteConstants.JOBS_EMPLOYEE,
+      component: <Job />,
+      access: RoleConstants.EMPLOYEE,
+    },
+    {
       route: RouteConstants.POST_JOB,
       component: <PostJob />,
       access: RoleConstants.EMPLOYEE,
+    },
+    {
+      route: RouteConstants.PROFILE_PAGE,
+      component: <Profile />,
+      access: RoleConstants.ALL,
     },
   ];
   return (
