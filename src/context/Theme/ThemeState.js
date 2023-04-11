@@ -7,6 +7,8 @@ const ThemeState = (props) => {
   let pastdueColor = "#C00000";
   //  const jetBlack = "#2E2F2F";
 
+  let textColor = "#3F5E60";
+
   const greyDefault = "#EAEDF1";
 
   return (
@@ -17,6 +19,7 @@ const ThemeState = (props) => {
         secondaryColor,
         btnColor,
         pastdueColor,
+        textColor,
         greyDefault,
       }}
     >
