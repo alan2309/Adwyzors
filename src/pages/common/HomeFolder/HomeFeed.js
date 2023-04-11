@@ -8,6 +8,14 @@ const HomeFeed = () => {
       <HomeContainer>
         <HomeFeedPost />
       </HomeContainer>
+
+      <HomeContainer>
+        <HomeFeedPost />
+      </HomeContainer>
+
+      <HomeContainer>
+        <HomeFeedPost />
+      </HomeContainer>
     </div>
   )
 }

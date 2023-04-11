@@ -15,7 +15,7 @@ const HomeFeedPost = ({ profImg = profImage, name = "Elon Musk", designation = "
               <img className='img-fluid' src={profImg} alt="" />
             </div>
             <div>
-              <h2 className='fs-5 fw-bold'>{name}</h2>
+              <h2 className='m-0 fs-5 fw-bold'>{name}</h2>
               <div className='fs-6 fw-300'>{designation}</div>
             </div>
           </div>
