@@ -19,13 +19,16 @@ function Home() {
               <HomeUser />
             </HomeContainer>
 
-            <HomeContainer>
-              <Useroptions />
-            </HomeContainer>
+            <div className="sticky-top d-flex flex-column gap-4" style={{ top: "6rem" }}>
+              <HomeContainer>
+                <Useroptions />
+              </HomeContainer>
 
-            <HomeContainer>
-              <HomeDiscussion />
-            </HomeContainer>
+              <HomeContainer>
+                <HomeDiscussion />
+              </HomeContainer>
+            </div>
+
           </Col>
 
           <Col className="p-3 py-4 d-flex flex-column gap-4">
