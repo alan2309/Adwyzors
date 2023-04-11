@@ -1,0 +1,9 @@
+.fixedBottom{
+  position: fixed;
+  bottom: 0px;
+}
+
+.bottomDiv{
+  border-radius: 22px 22px 0 0;
+  /* z-index: 1000!important; */
+}

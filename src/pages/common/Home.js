@@ -1,11 +1,14 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import styles from "./Home.module.css";
+import cx from "classnames";
 import HomeUser from "./HomeFolder/HomeUser";
 import HomeContainer from "./HomeFolder/HomeContainer";
 import Useroptions from "./HomeFolder/Useroptions";
 import HomeDiscussion from "./HomeFolder/HomeDiscussion";
 import TopInput from "./HomeFolder/TopInput";
 import HomeFeed from "./HomeFolder/HomeFeed";
+import HomeChat from "./HomeFolder/HomeChat";
 
 function Home() {
   return (
@@ -29,7 +32,14 @@ function Home() {
               </HomeContainer>
             </div>
 
+            {/* <div className={cx(styles.fixedBottom)} style={{ width: "22.55%" }}>
+              <div className={cx(styles.bottomDiv, "bg-white shadow-lg")}>
+                <HomeChat />
+              </div>
+            </div> */}
           </Col>
+
+          {/* Right Home Side */}
 
           <Col className="p-3 py-4 d-flex flex-column gap-4">
 
@@ -38,8 +48,6 @@ function Home() {
             </HomeContainer>
 
             <HomeFeed />
-            {/* <HomeContainer>
-            </HomeContainer> */}
 
           </Col>
         </Row>
