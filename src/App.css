@@ -33,3 +33,9 @@ body{
 .fw-900 {
   font-weight: 900 !important;
 }
+
+.flex-center-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
