@@ -5,12 +5,13 @@ import HomeContainer from "./HomeFolder/HomeContainer";
 import Useroptions from "./HomeFolder/Useroptions";
 import HomeDiscussion from "./HomeFolder/HomeDiscussion";
 import TopInput from "./HomeFolder/TopInput";
+import HomeFeed from "./HomeFolder/HomeFeed";
 
 function Home() {
   return (
-    <div className="bg-grey">
-      <Container>
-        <Row>
+    <div className="">
+      <Container className="px-5">
+        <Row className="px-5">
           <Col lg={4}
             className="p-3 py-4 d-flex flex-column gap-4"
           >
@@ -27,14 +28,14 @@ function Home() {
             </HomeContainer>
           </Col>
 
-          <Col className="p-3 d-flex flex-column gap-4">
+          <Col className="p-3 py-4 d-flex flex-column gap-4">
 
             <HomeContainer>
               <TopInput />
             </HomeContainer>
 
             <HomeContainer>
-              <TopInput />
+              <HomeFeed />
             </HomeContainer>
 
           </Col>
