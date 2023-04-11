@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
-import { ThemeContext } from "../../context/Theme/ThemeContext";
+import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import { RxCross2 } from "react-icons/rx";
 
 function Skills({ job, changeHandler, setLgShow, setJob }) {
@@ -63,7 +63,7 @@ function Skills({ job, changeHandler, setLgShow, setJob }) {
         <Button
           className="mx-3"
           variant="primary"
-          style={{ backgroundColor: "#FF8628", border: "none" }}
+          style={{ backgroundColor:primaryColor, border: "none" }}
           onClick={() => setLgShow(true)}
         >
           Submit

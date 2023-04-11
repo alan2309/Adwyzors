@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { ThemeContext } from "../../../context/Theme/ThemeContext";
 
 function JobForm({job,changeHandler,setSection}) {
+  const { primaryColor } = useContext(ThemeContext);
     return (
       <div className='p-4'>
           <Form>
@@ -45,7 +47,7 @@ function JobForm({job,changeHandler,setSection}) {
           <Form.Label>Description</Form.Label>
           <Form.Control style={{maxHeight:"12vh"}} as="textarea" placeholder="" name='desc' value={job.desc} onChange={changeHandler} />
         </Form.Group>
-        <Button variant="primary" style={{backgroundColor:"#FF8628",border:"none"}} onClick={()=>setSection(2)}>
+        <Button variant="primary" style={{backgroundColor:primaryColor,border:"none"}} onClick={()=>setSection(2)}>
           Next
         </Button>
       </Form>

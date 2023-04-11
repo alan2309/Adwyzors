@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { ThemeContext } from "../../../context/Theme/ThemeContext";
 
 function CompForm({job,changeHandler,setSection}) {
+  const { primaryColor } = useContext(ThemeContext);
   return (
     <div className='p-2 pt-0'>
         <Form>
@@ -28,7 +30,7 @@ function CompForm({job,changeHandler,setSection}) {
         <Form.Label>Application Deadline</Form.Label>
         <Form.Control type="date" placeholder="" name='deadline' value={job.deadline} onChange={changeHandler} />
       </Form.Group>
-      <Button variant="primary" style={{backgroundColor:"#FF8628",border:"none"}} onClick={()=>setSection(1)}>
+      <Button variant="primary" style={{backgroundColor:primaryColor,border:"none"}} onClick={()=>setSection(1)}>
         Next
       </Button>
     </Form>

@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Modal,Form,Button,Row,Col } from 'react-bootstrap';
+import { ThemeContext } from "../../../context/Theme/ThemeContext";
 
 function FinalModal({lgShow,setLgShow,job}) {
+  const { primaryColor } = useContext(ThemeContext);
   return (
     <div>
       <Modal
@@ -38,7 +40,7 @@ function FinalModal({lgShow,setLgShow,job}) {
         <Form.Label>Company Location</Form.Label>
         <Form.Control type="text" placeholder="" name='location' value={job.location}/>
       </Form.Group>
-      <Button variant="primary" style={{backgroundColor:"#FF8628",border:"none"}}>
+      <Button variant="primary" style={{backgroundColor:primaryColor,border:"none"}}>
         Next
       </Button>
     </Form>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {Row,Col} from 'react-bootstrap';
 import CompForm from './CompForm';
 import JobForm from './JobForm';
-import Skills from '../Skills';
+import Skills from './Skills';
 import FinalModal from './FinalModal';
 
 function PostJob() {
