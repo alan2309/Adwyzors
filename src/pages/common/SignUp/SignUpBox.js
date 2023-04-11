@@ -18,7 +18,6 @@ function SignUpBox() {
     fname: "",
     cname: "",
     lname: "",
-    username: "",
     isIndividual: isIndividual,
   });
   const navigate = useNavigate();
@@ -66,16 +65,6 @@ function SignUpBox() {
       >
         <Tab eventKey={0} title="Individual">
           <Form onSubmit={submit}>
-            <Form.Group className="mb-3" controlId="iusername">
-              <Form.Control
-                type="text"
-                name="username"
-                onChange={onChangeForm}
-                placeholder="Username*"
-                style={{ fontFamily: "Poppins" }}
-                required
-              />
-            </Form.Group>
             <Form.Group className="mb-3" controlId="ifname">
               <Form.Control
                 type="text"
@@ -144,16 +133,6 @@ function SignUpBox() {
         </Tab>
         <Tab eventKey={1} title="Company">
           <Form onSubmit={submit}>
-            <Form.Group className="mb-3" controlId="username">
-              <Form.Control
-                type="text"
-                name="username"
-                onChange={onChangeForm}
-                placeholder="Username*"
-                style={{ fontFamily: "Poppins" }}
-                required
-              />
-            </Form.Group>
             <Form.Group className="mb-3" controlId="fname">
               <Form.Control
                 type="text"

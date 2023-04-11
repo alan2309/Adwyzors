@@ -6,14 +6,14 @@ import { AuthContext } from "../../../context/AuthContext";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import Logo from "../../img/logo.svg";
 function Header() {
-  const { dispatch } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
   const { primaryColor } = useContext(ThemeContext);
 
   return (
     <Navbar sticky="top" expand="lg" style={{ backgroundColor: "white" }}>
       <Container style={{ margin: "0 10%" }}>
         <Navbar.Brand
-          href="#home"
+          href="/home"
           style={{
             fontFamily: "Merriweather",
             fontStyle: "normal",
@@ -44,17 +44,17 @@ function Header() {
               }}
             >
               <Col className="d-flex gap-2">
-                <Nav.Link href="#features">
+                <Nav.Link href="/home">
                   <HiHome size={28} color={primaryColor} />
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ marign: "0 113px" }}>
-                <Nav.Link href="#features">
+                <Nav.Link href="/jobs">
                   <HiOutlineBriefcase size={28} color="#3f5e60" />
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ gap: "23px" }}>
-                <Nav.Link href="#features">
+                <Nav.Link href="/chats">
                   <i
                     className="fa-regular fa-comment-dots fs-4"
                     style={{ color: "#3f5e60" }}
@@ -62,7 +62,7 @@ function Header() {
                 </Nav.Link>
               </Col>
               <Col>
-                <Nav.Link href="#features">
+                <Nav.Link href="/notification">
                   <i
                     className="fa-regular fa-bell fs-4"
                     style={{ color: "#3f5e60" }}
@@ -71,7 +71,7 @@ function Header() {
               </Col>
 
               <Col>
-                <Nav.Link href="#features">
+                <Nav.Link href={`/${user.username}`}>
                   <i
                     className="fa-regular fa-user fs-4"
                     style={{ color: "#3f5e60" }}

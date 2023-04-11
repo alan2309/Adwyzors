@@ -16,6 +16,7 @@ import LandingPage from "./pages/common/LandingPage/LandingPage";
 import Messaging from "./pages/common/Messaging";
 import Signup from "./pages/common/SignUp/Signup";
 import Login from "./pages/common/login/Login";
+import Profile from "./pages/common/Profile/Profile";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,11 @@ const Assembler = () => {
     {
       route: RouteConstants.LOGIN,
       component: <Login />,
+      access: RoleConstants.ALL,
+    },
+    {
+      route: RouteConstants.PROFILE_PAGE,
+      component: <Profile />,
       access: RoleConstants.ALL,
     },
     {
