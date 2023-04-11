@@ -16,7 +16,6 @@ import LandingPage from "./pages/common/LandingPage/LandingPage";
 import Messaging from "./pages/common/Messaging";
 import Signup from "./pages/common/SignUp/Signup";
 import Login from "./pages/common/login/Login";
-import Profile from "./pages/common/Profile/Profile";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
@@ -53,6 +52,11 @@ const Assembler = () => {
     {
       route: RouteConstants.MESSAGING_PAGE,
       component: <Messaging />,
+      access: RoleConstants.EMPLOYEE,
+    },
+    {
+      route: RouteConstants.POST_JOB,
+      component: <PostJob />,
       access: RoleConstants.EMPLOYEE,
     },
   ];

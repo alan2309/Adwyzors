@@ -12,4 +12,5 @@ export default class RouteConstants {
   static JOBS_EMPLOYEE = "/e/jobs";
   static JOBS_COMP = "/c/jobs";
   static JOB_DETAILS_PAGE = "/jobs/details/:jid";
+  static POST_JOB = "/c/postjob";
 }
