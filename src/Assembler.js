@@ -16,6 +16,8 @@ import LandingPage from "./pages/common/LandingPage/LandingPage";
 import Messaging from "./pages/common/Messaging";
 import Signup from "./pages/common/SignUp/Signup";
 import Login from "./pages/common/login/Login";
+import Profile from './pages/common/Profile/Profile'
+import PostJob from "./pages/company/postjob/PostJob";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
