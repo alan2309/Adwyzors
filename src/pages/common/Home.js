@@ -1,28 +1,26 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import styles from "./Home.module.css";
-import cx from "classnames";
-import HomeUser from "./HomeFolder/HomeUser";
 import HomeContainer from "./HomeFolder/HomeContainer";
-import Useroptions from "./HomeFolder/Useroptions";
 import HomeDiscussion from "./HomeFolder/HomeDiscussion";
-import TopInput from "./HomeFolder/TopInput";
 import HomeFeed from "./HomeFolder/HomeFeed";
-import HomeChat from "./HomeFolder/HomeChat";
+import HomeUser from "./HomeFolder/HomeUser";
+import TopInput from "./HomeFolder/TopInput";
+import Useroptions from "./HomeFolder/Useroptions";
 
 function Home() {
   return (
     <div className="">
       <Container className="px-5">
         <Row className="px-5">
-          <Col lg={4}
-            className="p-3 py-4 d-flex flex-column gap-4"
-          >
+          <Col lg={4} className="p-3 py-4 d-flex flex-column gap-4">
             <HomeContainer>
               <HomeUser />
             </HomeContainer>
 
-            <div className="sticky-top d-flex flex-column gap-4" style={{ top: "6rem" }}>
+            <div
+              className="sticky-top d-flex flex-column gap-4"
+              style={{ top: "6rem" }}
+            >
               <HomeContainer>
                 <Useroptions />
               </HomeContainer>
@@ -42,13 +40,11 @@ function Home() {
           {/* Right Home Side */}
 
           <Col className="p-3 py-4 d-flex flex-column gap-4">
-
             <HomeContainer>
               <TopInput />
             </HomeContainer>
 
             <HomeFeed />
-
           </Col>
         </Row>
       </Container>

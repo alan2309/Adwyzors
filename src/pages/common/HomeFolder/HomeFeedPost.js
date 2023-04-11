@@ -1,22 +1,31 @@
-import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap';
-import profImage from "../../../images/profImg.jpg";
+import React from "react";
+import { Container } from "react-bootstrap";
 import postImage from "../../../images/postImg.jpg";
+import profImage from "../../../images/profImg.jpg";
 
-const HomeFeedPost = ({ profImg = profImage, name = "Elon Musk", designation = "CEO of SpaceEx", postText = `You have to match the convenience of the gasoline car in order for people to buy an electric car." "In order to have clean air in cities, you have to go electric." "You should not show somebody something very cool and then not do it. At Tesla, any prototype that is shown to customers, the production must be better.`, postImg = postImage, postLikes, postComments }) => {
+const HomeFeedPost = ({
+  profImg = profImage,
+  name = "Elon Musk",
+  designation = "CEO of SpaceEx",
+  postText = `You have to match the convenience of the gasoline car in order for people to buy an electric car." "In order to have clean air in cities, you have to go electric." "You should not show somebody something very cool and then not do it. At Tesla, any prototype that is shown to customers, the production must be better.`,
+  postImg = postImage,
+  postLikes,
+  postComments,
+}) => {
   return (
-    <Container fluid className='p-0'>
-
-      <Container fluid className='p-0 p-3 px-4'>
-
-        <Container fluid className='p-0 my-2 mb-3 d-flex align-items-center justify-content-between col-darkGrey'>
-          <div className='d-flex gap-3'>
-            <div lg={2} className='p-0'>
-              <img className='img-fluid' src={profImg} alt="" />
+    <Container fluid className="p-0">
+      <Container fluid className="p-0 p-3 px-4">
+        <Container
+          fluid
+          className="p-0 my-2 mb-3 d-flex align-items-center justify-content-between col-darkGrey"
+        >
+          <div className="d-flex gap-3">
+            <div lg={2} className="p-0">
+              <img className="img-fluid" src={profImg} alt="" />
             </div>
             <div>
-              <h2 className='m-0 fs-5 fw-bold'>{name}</h2>
-              <div className='fs-6 fw-300'>{designation}</div>
+              <h2 className="m-0 fs-5 fw-bold">{name}</h2>
+              <div className="fs-6 fw-300">{designation}</div>
             </div>
           </div>
           <div lg={1}>
@@ -24,16 +33,15 @@ const HomeFeedPost = ({ profImg = profImage, name = "Elon Musk", designation = "
           </div>
         </Container>
 
-
-        <Container fluid className='p-0 fw-300'>
-          <div className='text-wrap'>{postText}</div>
+        <Container fluid className="p-0 fw-300">
+          <div className="text-wrap">{postText}</div>
         </Container>
       </Container>
       <div>
-        <img className='img-fluid' src={postImg} alt="" srcSet="" />
+        <img className="img-fluid" src={postImg} alt="" srcSet="" />
       </div>
-      <Container className='d-flex justify-content-between align-items-center gap-2 p-3 px-4'>
-        <div className='d-flex gap-4 align-items-center'>
+      <Container className="d-flex justify-content-between align-items-center gap-2 p-3 px-4">
+        <div className="d-flex gap-4 align-items-center">
           <div>
             <i className="fa-regular fa-heart fa-xl"></i>
           </div>
@@ -49,7 +57,7 @@ const HomeFeedPost = ({ profImg = profImage, name = "Elon Musk", designation = "
         </div>
       </Container>
     </Container>
-  )
-}
+  );
+};
 
-export default HomeFeedPost
+export default HomeFeedPost;
