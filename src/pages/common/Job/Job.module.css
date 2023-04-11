@@ -1,10 +1,3 @@
-.top {
-  width: 100%;
-  height: 180px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 15px;
-}
 .pic {
   background-size: cover;
   width: 10vw;
@@ -30,24 +23,24 @@
   float: left !important;
 }
 #expPic {
-  width: 13.16666667% !important;
+  width: 20% !important;
 }
 #expPicData {
-  width: 86.83333333% !important;
+  width: 80% !important;
 }
 @media (max-width: 1200px) {
-  #proCol,
-  #proColData {
+  #expPic,
+  #expPicData {
     float: left !important;
   }
-  #proCol {
+  #expPic {
     width: 30.16666667% !important;
   }
-  #proColData {
+  #expPicData {
     width: 69.83333333% !important;
   }
 }
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   #proCol,
   #proColData {
     float: left !important;
@@ -60,4 +53,4 @@
   #proColData {
     width: 100% !important;
   }
-}
+}*/

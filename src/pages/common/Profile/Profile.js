@@ -12,7 +12,8 @@ import ProfilePicData from "./ProfilePicData";
 function Profile() {
   const expdata = [
     {
-      jobImg: "",
+      jobImg:
+        "https://media.licdn.com/dms/image/C560BAQGzaKzBYzdDvw/company-logo_100_100/0/1656682279077?e=1689206400&v=beta&t=LyK_bdRUVUh7OttEL5CO3VUyt09EqXKyFtyu-xXivEg",
       jobTitle: "Freelance UX/UI designer",
       jobCompany: "Self Employed",
       jobLocation: "Around the world",
@@ -23,7 +24,7 @@ function Profile() {
     },
     {
       jobImg:
-        "https://assets-global.website-files.com/603fea6471d9d8559d077603/6092b7514135708162a4be92_Favicon%20256.png",
+        "https://media.licdn.com/dms/image/C4E0BAQEMcCsKYUoUKw/company-logo_100_100/0/1658309646399?e=1689206400&v=beta&t=O3oBJeldJb2pE1X-YnKsHqLtFzouo5v0zFdS9CXjYuE",
       jobTitle: "UX/UI designer",
       jobCompany: "Upwork",
       jobLocation: "International",
@@ -44,7 +45,7 @@ function Profile() {
     },
     {
       eduImg:
-        "https://assets-global.website-files.com/603fea6471d9d8559d077603/6092b7514135708162a4be92_Favicon%20256.png",
+        "https://media.licdn.com/dms/image/C4E0BAQEMcCsKYUoUKw/company-logo_100_100/0/1658309646399?e=1689206400&v=beta&t=O3oBJeldJb2pE1X-YnKsHqLtFzouo5v0zFdS9CXjYuE",
       eduTitle: "Jai Hind College",
       eduType: "Bachelors in Commercial Applications",
       eduPeriod: "2019 — 2023",
@@ -56,7 +57,7 @@ function Profile() {
   return (
     <div className="">
       <Container className="px-5">
-        <Row className="px-1">
+        <Row className="px-1" style={{ margin: "0 20px" }}>
           <Col lg={8} className="p-3 py-4 d-flex flex-column gap-4">
             {" "}
             <HomeContainer>
@@ -85,7 +86,10 @@ function Profile() {
           </Col>
           <Col lg={4} className="p-3 py-4 d-flex flex-column gap-4">
             <HomeContainer>
-              <Container className="p-3 px-4 d-flex flex-column gap-3">
+              <Container
+                className="d-flex flex-column gap-3"
+                style={{ margin: 0, padding: 0 }}
+              >
                 <JobOpportunity />
               </Container>
             </HomeContainer>
