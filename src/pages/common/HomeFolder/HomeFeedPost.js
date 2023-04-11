@@ -30,7 +30,7 @@ const HomeFeedPost = ({ profImg = profImage, name = "Elon Musk", designation = "
         </Container>
       </Container>
       <div>
-        <img className='img-fluid' src={postImg} alt="" srcset="" />
+        <img className='img-fluid' src={postImg} alt="" srcSet="" />
       </div>
       <Container className='d-flex justify-content-between align-items-center gap-2 p-3 px-4'>
         <div className='d-flex gap-4 align-items-center'>

@@ -12,7 +12,7 @@ const HomeUser = ({
       <Container fluid>
         <Row>
           <Col lg={2} className="p-0 flex-center-center">
-            <img src={userImage} alt="profile-img" srcset="" className="rounded-circle img-fluid" />
+            <img src={userImage} alt="profile-img" srcSet="" className="rounded-circle img-fluid" />
           </Col>
           <Col></Col>
           <Col lg={8} className="p-0 d-flex align-items-center">
