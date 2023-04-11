@@ -34,9 +34,9 @@ function Home() {
               <TopInput />
             </HomeContainer>
 
-            <HomeContainer>
-              <HomeFeed />
-            </HomeContainer>
+            <HomeFeed />
+            {/* <HomeContainer>
+            </HomeContainer> */}
 
           </Col>
         </Row>

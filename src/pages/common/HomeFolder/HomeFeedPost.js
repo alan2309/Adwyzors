@@ -9,33 +9,44 @@ const HomeFeedPost = ({ profImg = profImage, name = "Elon Musk", designation = "
 
       <Container fluid className='p-0 p-3 px-4'>
 
-        <Container fluid className='p-0 my-2 mb-3'>
+        <Container fluid className='p-0 my-2 mb-3 d-flex align-items-center justify-content-between col-darkGrey'>
           <div className='d-flex gap-3'>
             <div lg={2} className='p-0'>
               <img className='img-fluid' src={profImg} alt="" />
             </div>
             <div>
-              <h3 className='fs-5'>{name}</h3>
-              <h6 className='fs-6'>{designation}</h6>
+              <h2 className='fs-5 fw-bold'>{name}</h2>
+              <div className='fs-6 fw-300'>{designation}</div>
             </div>
           </div>
           <div lg={1}>
-
+            <i className="fa-solid fa-ellipsis-vertical fa-xl"></i>
           </div>
         </Container>
 
 
-        <Container fluid className='p-0'>
+        <Container fluid className='p-0 fw-300'>
           <div className='text-wrap'>{postText}</div>
         </Container>
       </Container>
       <div>
         <img className='img-fluid' src={postImg} alt="" srcset="" />
       </div>
-      <Container>
-
-
-
+      <Container className='d-flex justify-content-between align-items-center gap-2 p-3 px-4'>
+        <div className='d-flex gap-4 align-items-center'>
+          <div>
+            <i className="fa-regular fa-heart fa-xl"></i>
+          </div>
+          <div>
+            <i className="fa-regular fa-comment fa-xl"></i>
+          </div>
+          <div>
+            <i className="fa-regular fa-paper-plane fa-xl"></i>
+          </div>
+        </div>
+        <div>
+          <i className="fa-regular fa-bookmark fa-xl"></i>
+        </div>
       </Container>
     </Container>
   )
