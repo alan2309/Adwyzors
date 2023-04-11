@@ -2,6 +2,10 @@
   font-family: "Roboto", "Poppins";
 }
 
+body{
+  background-color: #f2f3f5 !important;
+}
+
 .bg-grey {
   background-color: #f2f3f5 !important;
 }

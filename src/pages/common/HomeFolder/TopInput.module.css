@@ -1,0 +1,13 @@
+.input{
+  -webkit-appearance: none;
+  border: 0;
+}
+
+.input:focus {
+  outline: none;
+  /* border-bottom: 1px solid #3F5E60; */
+}
+
+.iconCol, .greyTxt {
+  color: #3F5E60;
+}
