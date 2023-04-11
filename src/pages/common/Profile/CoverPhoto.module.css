@@ -7,12 +7,59 @@
 }
 .pic {
   background-size: cover;
-  width: 155px;
-  height: 155px;
+  width: 10vw;
+  height: 10vw;
+  min-width: 130px !important;
+  min-height: 130px !important;
   border-radius: 50%;
   position: relative;
   top: -45px;
   box-shadow: 0px 3px 5px darkgrey;
   border: solid 2px white;
-  transition: all 1s ease-in-out;
+}
+.jobPic {
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  border-radius: 50%;
+  box-shadow: 0px 3px 5px darkgrey;
+  border: solid 2px white;
+}
+#expPic,
+#expPicData {
+  float: left !important;
+}
+#expPic {
+  width: 13.16666667% !important;
+}
+#expPicData {
+  width: 86.83333333% !important;
+}
+@media (max-width: 1200px) {
+  #proCol,
+  #proColData {
+    float: left !important;
+  }
+  #proCol {
+    width: 30.16666667% !important;
+  }
+  #proColData {
+    width: 69.83333333% !important;
+  }
+}
+@media (max-width: 768px) {
+  #proCol,
+  #proColData {
+    float: left !important;
+  }
+  #proCol {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+  }
+  #proColData {
+    width: 100% !important;
+  }
 }

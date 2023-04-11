@@ -10,7 +10,15 @@ function Header() {
   const { primaryColor } = useContext(ThemeContext);
 
   return (
-    <Navbar sticky="top" expand="lg" style={{ backgroundColor: "white" }}>
+    <Navbar
+      sticky="top"
+      expand="lg"
+      style={{
+        backgroundColor: "white",
+        boxShadow: "0px 1px 1px lightgrey",
+        border: "solid 1px white",
+      }}
+    >
       <Container style={{ margin: "0 10%" }}>
         <Navbar.Brand
           href="/home"

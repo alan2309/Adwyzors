@@ -1,16 +1,57 @@
-import React, { useContext } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import { FiDownload } from "react-icons/fi";
-import { MdModeEdit } from "react-icons/md";
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import HomeContainer from "../HomeFolder/HomeContainer";
 import styles from "./CoverPhoto.module.css";
 
-import { AuthContext } from "../../../context/AuthContext";
-import { ThemeContext } from "../../../context/Theme/ThemeContext";
+import JobOpportunity from "../Job/JobOpportunity";
+import AboutMe from "./AboutMe";
+import Education from "./Education";
+import Experience from "./Experience";
+import ProfilePicData from "./ProfilePicData";
 
 function Profile() {
-  const { primaryColor, textColor } = useContext(ThemeContext);
-  const { user } = useContext(AuthContext);
+  const expdata = [
+    {
+      jobImg: "",
+      jobTitle: "Freelance UX/UI designer",
+      jobCompany: "Self Employed",
+      jobLocation: "Around the world",
+      jobPeriod: "Jun 2016 — Present",
+      jobTotalPeriod: "3 yrs 3 mos",
+      jobExperience:
+        "Work with clients and web studios as freelancer.  Work in next areas: eCommerce web projects; creative landing pages; iOs and Android apps; corporate web sites and corporate identity sometimes.",
+    },
+    {
+      jobImg:
+        "https://assets-global.website-files.com/603fea6471d9d8559d077603/6092b7514135708162a4be92_Favicon%20256.png",
+      jobTitle: "UX/UI designer",
+      jobCompany: "Upwork",
+      jobLocation: "International",
+      jobPeriod: "Jun 2019 — Present",
+      jobTotalPeriod: "3 mos",
+      jobExperience:
+        "New experience with Upwork system. Work in next areas: UX/UI design, graphic design, interaction design, UX research.",
+    },
+  ];
+  const eduData = [
+    {
+      eduImg: "",
+      eduTitle: "Jai Hind College",
+      eduType: "Bachelors in Commercial Applications",
+      eduPeriod: "2016 — 2018",
+      eduGrade: "9.34",
+      eduAchievements: "Prize won in XYZ",
+    },
+    {
+      eduImg:
+        "https://assets-global.website-files.com/603fea6471d9d8559d077603/6092b7514135708162a4be92_Favicon%20256.png",
+      eduTitle: "Jai Hind College",
+      eduType: "Bachelors in Commercial Applications",
+      eduPeriod: "2019 — 2023",
+      eduGrade: "8.67",
+      eduAchievements: "Prize won in XYZ",
+    },
+  ];
 
   return (
     <div className="">
@@ -33,142 +74,11 @@ function Profile() {
                   }}
                 ></div>
                 <Container>
-                  <Row>
-                    <Col md={3} style={{ margin: 0, paddingRight: "0" }}>
-                      {" "}
-                      <div
-                        className={styles.pic}
-                        style={{
-                          backgroundImage:
-                            "url(https://media.licdn.com/dms/image/C5603AQERTD_EeJiGlA/profile-displayphoto-shrink_800_800/0/1661816468423?e=1686787200&v=beta&t=J5x0Fk6u_DyXGtgnQqh8vAjPXf1WLylDATD07O7NeMg)",
-                        }}
-                        id="profile_pic"
-                      ></div>
-                    </Col>
-                    <Col md={9} style={{ margin: 0, padding: 0 }}>
-                      <Row style={{ margin: 0, padding: 0 }}>
-                        <p
-                          style={{
-                            padding: 0,
-                            color: primaryColor,
-                            marginBottom: "1px",
-                            marginTop: "5px",
-                            fontSize: "14px",
-                          }}
-                        >
-                          {" "}
-                          #OpenToWork
-                        </p>
-                        <Col md={9} style={{ margin: 0, padding: 0 }}>
-                          <h4
-                            style={{
-                              color: textColor,
-                              marginBottom: "8px",
-                              fontSize: "24px",
-                              fontWeight: "bolder",
-                            }}
-                          >
-                            {user.fname} {user.lname}
-                          </h4>
-                          <h4
-                            style={{
-                              color: textColor,
-                              marginBottom: "5px",
-                              fontSize: "15px",
-                            }}
-                          >
-                            UI/UX Designer | Student | Winner at XYZ College |
-                            Rank 12 All over India
-                          </h4>
-                        </Col>
-                        <Col md={3}>
-                          <Row style={{ float: "right", paddingRight: "5%" }}>
-                            <Col>
-                              <Row>
-                                <MdModeEdit size={25} color={textColor} />
-                              </Row>
-                              <Row>
-                                {" "}
-                                <Button
-                                  style={{
-                                    border: "none",
-                                    boxShadow:
-                                      "0px 10px 30px rgba(113, 123, 133, 0.05)",
-                                    borderRadius: "12px",
-                                    color: textColor,
-                                    margin: "8px 0",
-                                    backgroundColor: "white",
-                                    width: "100%",
-                                    position: "relative",
-                                  }}
-                                  type="button"
-                                  className="btn btn-block"
-                                >
-                                  <FiDownload
-                                    size={25}
-                                    color={textColor}
-                                  ></FiDownload>
-                                </Button>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
+                  <ProfilePicData />
 
-                  {/*<UserDetails/>*/}
-                  {/*<AboutMe/>*/}
-                  <Row
-                    style={{
-                      boxShadow: "0px 10px 30px rgba(113, 123, 133, 0.05)",
-                      borderRadius: "12px",
-                      //  backgroundColor:"rgba(242, 243, 245, 0.25);"
-                      backgroundColor: "#F2F3F540",
-                    }}
-                  >
-                    <Container style={{ padding: "20px" }}>
-                      <Row style={{ marginBottom: "10px" }}>
-                        <Col
-                          md={11}
-                          style={{
-                            color: textColor,
-                            fontSize: "20px",
-                            fontWeight: "600",
-                          }}
-                        >
-                          About Me
-                        </Col>
-                        <Col>
-                          {" "}
-                          <MdModeEdit size={25} color={textColor} />
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col style={{ color: textColor, paddingLeft: "10px" }}>
-                          Freelance UX/UI designer, 80+ projects in web design,
-                          mobile apps (iOS & android) and creative projects.
-                          Open to offers.
-                        </Col>
-                      </Row>
-                      <Row>
-                        <p
-                          style={{
-                            padding: 0,
-                            paddingLeft: "10px",
-                            color: primaryColor,
-                            marginBottom: "1px",
-                            marginTop: "5px",
-                            fontSize: "14px",
-                          }}
-                        >
-                          READ MORE
-                        </p>{" "}
-                      </Row>
-                    </Container>
-                  </Row>
-                  {/*<Experience/>*/}
-                  {/*<Education/>*/}
+                  <AboutMe />
+                  <Experience expdata={expdata} />
+                  <Education eduData={eduData} />
                 </Container>
               </Container>
             </HomeContainer>
@@ -176,7 +86,7 @@ function Profile() {
           <Col lg={4} className="p-3 py-4 d-flex flex-column gap-4">
             <HomeContainer>
               <Container className="p-3 px-4 d-flex flex-column gap-3">
-                asd
+                <JobOpportunity />
               </Container>
             </HomeContainer>
           </Col>
