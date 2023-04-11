@@ -35,20 +35,20 @@ function PostJob() {
     <div className='bg-grey p-4 d-flex justify-content-end' style={{alignContent:"center"}}>
         <Row>
             <Col className='mx-2' md={4}>
-                <Row className='bg-white' style={{cursor:"pointer"}}>
+                <Row className='bg-white' style={{cursor:"pointer",borderRadius:"15px"}}>
                     <Col className='m-3' onClick={(e)=>{setSection(0)}} md={12}>
-                        1st section
+                        Company Details
                     </Col>
                     <Col className='m-3' onClick={(e)=>{setSection(1)}} md={12}>
-                        2nd section
+                        Job Details
                     </Col>
                     <Col className='m-3' onClick={(e)=>{setSection(2)}} md={12}>
-                        3rd section
+                        Skill Required
                     </Col>
                 </Row>
             </Col>
             <Col md={7}>
-                <Row className='bg-white' style={{height:'82vh', width:'50vw'}}>
+                <Row className='bg-white' style={{height:'82vh', width:'50vw',borderRadius:"15px"}}>
                 <Col className='comp_details' style={{padding:"20px",display:(section===0)?"block":'none'}}>
                     <CompForm job={job} changeHandler={changeHandler} setSection={setSection}/>
                 </Col>
