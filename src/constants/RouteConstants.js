@@ -8,6 +8,9 @@ export default class RouteConstants {
   static LANDING_PAGE = "/";
   static HOME_PAGE = "/home";
   static MESSAGING_PAGE = "/chats";
+  static COMPANY_NOTIFICATION_PAGE = "/c/notification";
+  static ADMIN_NOTIFICATION_PAGE = "/admin/notification";
+  static NOTIFICATION_PAGE = "/notification";
   static PROFILE_PAGE = "/:username";
   static JOBS_EMPLOYEE = "/jobs";
   static JOB_DETAILS_PAGE = "/jobs/details/:jid";

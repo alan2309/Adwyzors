@@ -16,9 +16,11 @@ import LandingPage from "./pages/common/LandingPage/LandingPage";
 import Messaging from "./pages/common/Messaging";
 import Signup from "./pages/common/SignUp/Signup";
 import Login from "./pages/common/login/Login";
-import Profile from './pages/common/Profile/Profile'
+import Profile from "./pages/common/Profile/Profile";
 import PostJob from "./pages/company/postjob/PostJob";
 import Job from "./pages/common/Job/Job";
+import EmployeeNotification from "./pages/employee/Notification/EmployeeNotification";
+import AdminNotification from "./pages/admin/Notification/AdminNotification";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
@@ -26,6 +28,16 @@ const Assembler = () => {
     {
       route: RouteConstants.LOGIN,
       component: <Login />,
+      access: RoleConstants.ALL,
+    },
+    {
+      route: RouteConstants.ADMIN_NOTIFICATION_PAGE,
+      component: <AdminNotification />,
+      access: RoleConstants.ALL,
+    },
+    {
+      route: RouteConstants.NOTIFICATION_PAGE,
+      component: <EmployeeNotification />,
       access: RoleConstants.ALL,
     },
     {
