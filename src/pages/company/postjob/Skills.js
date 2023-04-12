@@ -43,7 +43,7 @@ function Skills({ job, changeHandler, setLgShow, setJob }) {
             >
                 <Row>
                 {job.skills.map((skill,index)=>(
-                <Col style={{display:"inline-block"}} md={4}>
+                <Col key={index} style={{display:"inline-block"}} md={4}>
                     <div
                 className="p-1 px-3 mt-2"
                 style={{

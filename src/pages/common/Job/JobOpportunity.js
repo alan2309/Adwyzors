@@ -126,11 +126,12 @@ const JobCard = ({ job, index }) => {
 };
 
 function JobOpportunity() {
+  const {primaryColor} = useContext(ThemeContext)
   return (
     <Row>
       <Row
         style={{
-          backgroundColor: "#0275B1",
+          backgroundColor: primaryColor,
           borderRadius: "12px 12px 0 0",
           alignItems: "center",
           display: "flex",
@@ -149,7 +150,7 @@ function JobOpportunity() {
           Job Opportunities
         </p>
       </Row>
-      <Row style={{ margin: "10px", padding: "5px 0 0px 0" }}>
+      <Row style={{height:"67vh",overflowY:"scroll",scrollbarColor:"white" ,margin: "10px", padding: "5px 0 0px 0" }}>
         {jobdata.length > 0 &&
           jobdata.map((job, index) => {
             return <JobCard job={job} index={index} />;

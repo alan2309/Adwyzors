@@ -1,9 +1,8 @@
-import React,{useContext} from 'react';
-import { Modal,Form,Button,Row,Col } from 'react-bootstrap';
-import { ThemeContext } from "../../../context/Theme/ThemeContext";
+import React from 'react';
+import { Modal } from 'react-bootstrap';
+import JobDesc from '../../common/Job/JobDesc';
 
 function FinalModal({lgShow,setLgShow,job}) {
-  const { primaryColor } = useContext(ThemeContext);
   return (
     <div>
       <Modal
@@ -18,40 +17,7 @@ function FinalModal({lgShow,setLgShow,job}) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body style={{height:"80vh", overflowY:"scroll"}}>
-          <Row>
-            <Col md={6}>
-        <Form>
-        <Form.Group className="mb-3" controlId="jobtitle">
-        <Form.Label>Job title</Form.Label>
-        <Form.Control type="text" placeholder="" name='title' value={job.title}/>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="companyName">
-        <Form.Label>Company Name</Form.Label>
-        <Form.Control type="text" placeholder="" name='comp_name' value={job.comp_name}/>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="companyEmail">
-        <Form.Label>Company Email</Form.Label>
-        <Form.Control type="email" placeholder="" name='email' value={job.email}/>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="location">
-        <Form.Label>Company Location</Form.Label>
-        <Form.Control type="text" placeholder="" name='location' value={job.location} />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="deadline">
-        <Form.Label>Application Deadline</Form.Label>
-        <Form.Control type="date" placeholder="" name='deadline' value={job.deadline}/>
-      </Form.Group>
-      
-      <Button variant="primary" style={{backgroundColor:primaryColor,border:"none"}}>
-        Next
-      </Button>
-    </Form>
-    </Col>
-    <Col md={6}></Col>
-    </Row>
+        <JobDesc/>
         </Modal.Body>
       </Modal>
     </div>
