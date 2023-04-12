@@ -30,40 +30,44 @@ function Skills({ job, changeHandler, setLgShow, setJob }) {
               <Button>ADD</Button>
             </Col>
           </Row>
-          
-            <div
-              className="mt-3 mx-3 p-2 px-2"
-              style={{
-                width: "92%",
-                height: "40vh",
-                overflowY:"scroll",
-                border: "1px solid black",
-                borderRadius: "10px",
-              }}
-            >
-                <Row>
-                {job.skills.map((skill,index)=>(
-                <Col key={index} style={{display:"inline-block"}} md={4}>
-                    <div
-                className="p-1 px-3 mt-2"
-                style={{
-                  backgroundColor: "rgb(188,118,186,0.7)",
-                  alignContent:"space-between",
-                  borderRadius: "20px",
-                }}
-              >
-                {skill}
-                <RxCross2 className="mb-1" color="black" style={{marginLeft:"10px",cursor:"pointer"}}/>
-              </div>
+
+          <div
+            className="mt-3 mx-3 p-2 px-2"
+            style={{
+              width: "92%",
+              height: "40vh",
+              overflowY: "scroll",
+              border: "1px solid black",
+              borderRadius: "10px",
+            }}
+          >
+            <Row>
+              {job.skills.map((skill, index) => (
+                <Col key={index} style={{ display: "inline-block" }} md={4}>
+                  <div
+                    className="p-1 px-3 mt-2"
+                    style={{
+                      backgroundColor: "rgb(188,118,186,0.7)",
+                      alignContent: "space-between",
+                      borderRadius: "20px",
+                    }}
+                  >
+                    {skill}
+                    <RxCross2
+                      className="mb-1"
+                      color="black"
+                      style={{ marginLeft: "10px", cursor: "pointer" }}
+                    />
+                  </div>
                 </Col>
-            ))}</Row>
-            </div>
-          
+              ))}
+            </Row>
+          </div>
         </Form.Group>
         <Button
           className="mx-3"
           variant="primary"
-          style={{ backgroundColor:primaryColor, border: "none" }}
+          style={{ backgroundColor: primaryColor, border: "none" }}
           onClick={() => setLgShow(true)}
         >
           Submit
