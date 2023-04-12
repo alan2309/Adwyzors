@@ -12,7 +12,7 @@ function Job() {
   return (
     <div>
       <Row className="mt-3 mb-1 d-flex justify-content-center">
-        <Col className="d-flex justify-content-between p" md={3}>
+        <Col className="d-flex justify-content-between" md={3}>
           <Button
             style={{
               backgroundColor: active ? "white" : primaryColor,

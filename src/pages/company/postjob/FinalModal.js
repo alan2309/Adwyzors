@@ -16,7 +16,7 @@ function FinalModal({ lgShow, setLgShow, job }) {
             Confirm Details
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ height: "80vh", overflowY: "scroll" }}>
+        <Modal.Body>
           <JobDesc />
         </Modal.Body>
       </Modal>
