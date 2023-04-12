@@ -161,7 +161,7 @@ function JobOpportunity() {
       >
         {jobdata.length > 0 &&
           jobdata.map((job, index) => {
-            return <JobCard job={job} index={index} />;
+            return <JobCard key={index} job={job} index={index} />;
           })}
       </Row>
     </Row>

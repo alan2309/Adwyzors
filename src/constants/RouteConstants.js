@@ -9,8 +9,7 @@ export default class RouteConstants {
   static HOME_PAGE = "/home";
   static MESSAGING_PAGE = "/chats";
   static PROFILE_PAGE = "/:username";
-  static JOBS_EMPLOYEE = "/e/jobs";
-  static JOBS_COMP = "/c/jobs";
+  static JOBS_EMPLOYEE = "/jobs";
   static JOB_DETAILS_PAGE = "/jobs/details/:jid";
-  static POST_JOB = "/c/postjob";
+  static POST_JOB = "/postjob";
 }

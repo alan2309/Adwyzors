@@ -57,7 +57,7 @@ function Header() {
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ marign: "0 113px" }}>
-                <Nav.Link href="/e/jobs">
+                <Nav.Link href="/jobs">
                   <HiOutlineBriefcase size={28} color="#3f5e60" />
                 </Nav.Link>
               </Col>

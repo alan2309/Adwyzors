@@ -122,6 +122,7 @@ let ValidationComponent = (props) => {
       return props.component;
     } else if (props.access !== "" && user.userRole !== props.access) {
       return <div>401 :Access Denied</div>;
+      // return props.component;
     }
   } else {
     return (

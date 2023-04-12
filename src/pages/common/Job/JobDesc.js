@@ -12,8 +12,8 @@ function JobDesc() {
   }, []);
   return (
     <div
-      className="bg-white mt-2 pt-3 ps-3 pb-2"
-      style={{ borderRadius: "15px",height: "79vh", overflowY: "scroll" }}
+      className="bg-white mt-1 pt-3 ps-3 pb-2"
+      style={{ borderRadius: "15px",height: "78vh", overflowY: "scroll" }}
     >
       <Row>
         <Col md={3}>
