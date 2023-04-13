@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import HomeContainer from "../../common/HomeFolder/HomeContainer";
 import styles from "./Notification.module.css";
@@ -110,9 +110,12 @@ const NotificationCard = ({ noti, index }) => {
     </Row>
   );
 };
-function EmployeeNotification() {
+function EmployeeNotification({ changeSection }) {
   const { primaryColor, textColor } = useContext(ThemeContext);
 
+  useEffect(() => {
+    changeSection(3);
+  }, [changeSection]);
   return (
     <div className="">
       <Container className="px-5">

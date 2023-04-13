@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import HomeUser from "./HomeUser";
 import HomeContainer from "./HomeContainer";
 import Useroptions from "./Useroptions";
 import HomeDiscussion from "./HomeDiscussion";
 
-function Home() {
+function Home({ changeSection }) {
+  useEffect(() => {
+    changeSection(0);
+  }, [changeSection]);
   return (
     <div className="bg-grey">
       <Container>

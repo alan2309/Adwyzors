@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import {
   Navigate,
@@ -24,6 +24,11 @@ import AdminNotification from "./pages/admin/Notification/AdminNotification";
 
 const Assembler = () => {
   const { user } = useContext(AuthContext);
+  const [section, setSection] = useState(0);
+
+  const changeSection = (id) => {
+    setSection(id);
+  };
   let routes = [
     {
       route: RouteConstants.LOGIN,
@@ -32,12 +37,12 @@ const Assembler = () => {
     },
     {
       route: RouteConstants.ADMIN_NOTIFICATION_PAGE,
-      component: <AdminNotification />,
+      component: <AdminNotification changeSection={changeSection} />,
       access: RoleConstants.ALL,
     },
     {
       route: RouteConstants.NOTIFICATION_PAGE,
-      component: <EmployeeNotification />,
+      component: <EmployeeNotification changeSection={changeSection} />,
       access: RoleConstants.ALL,
     },
     {
@@ -47,7 +52,7 @@ const Assembler = () => {
     },
     {
       route: RouteConstants.HOME_PAGE,
-      component: user.auth ? <Home /> : <Home />, // Home : Login
+      component: user.auth ? <Home changeSection={changeSection} /> : <Login />, // Home : Login
       access: RoleConstants.ALL,
     },
     {
@@ -61,33 +66,37 @@ const Assembler = () => {
     },
     {
       route: RouteConstants.MESSAGING_PAGE,
-      component: <Messaging />,
+      component: <Messaging changeSection={changeSection} />,
       access: RoleConstants.EMPLOYEE,
     },
     {
       route: RouteConstants.JOBS_EMPLOYEE,
-      component: <Job />,
+      component: <Job changeSection={changeSection} />,
       access: RoleConstants.EMPLOYEE,
     },
     {
       route: RouteConstants.JOBS_COMPANY,
-      component: <Job />,
+      component: <Job changeSection={changeSection} />,
       access: RoleConstants.COMPANY,
     },
     {
       route: RouteConstants.POST_JOB,
-      component: <PostJob />,
+      component: <PostJob changeSection={changeSection} />,
       access: RoleConstants.COMPANY,
     },
     {
       route: RouteConstants.PROFILE_PAGE,
-      component: <Profile />,
+      component: <Profile changeSection={changeSection} />,
       access: RoleConstants.ALL,
     },
   ];
   return (
     <div>
-      {user.auth ? <Header /> : <BasicHeader />}
+      {user.auth ? (
+        <Header section={section} changeSection={changeSection} />
+      ) : (
+        <BasicHeader />
+      )}
       <Router>
         <Routes>
           {routes.map((route, key) => (

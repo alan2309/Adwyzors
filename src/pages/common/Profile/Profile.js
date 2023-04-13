@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import HomeContainer from "../HomeFolder/HomeContainer";
 import styles from "./CoverPhoto.module.css";
@@ -9,7 +9,11 @@ import Education from "./Education";
 import Experience from "./Experience";
 import ProfilePicData from "./ProfilePicData";
 
-function Profile() {
+function Profile({ changeSection }) {
+  useEffect(() => {
+    changeSection(4);
+  }, [changeSection]);
+
   const expdata = [
     {
       jobImg:

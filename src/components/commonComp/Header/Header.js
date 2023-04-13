@@ -7,9 +7,9 @@ import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import Logo from "../../img/logo.svg";
 import RoleConstants from "../../../constants/RoleConstants";
 import RouteConstants from "../../../constants/RouteConstants";
-function Header() {
+function Header({ section }) {
   const { user, dispatch } = useContext(AuthContext);
-  const { primaryColor } = useContext(ThemeContext);
+  const { primaryColor, textColor } = useContext(ThemeContext);
 
   return (
     <Navbar
@@ -30,7 +30,7 @@ function Header() {
             fontWeight: "400",
             fontSize: "24px",
             lineHeight: "30px",
-            color: "#28363D",
+            color: primaryColor,
           }}
         >
           <img
@@ -55,7 +55,10 @@ function Header() {
             >
               <Col className="d-flex gap-2">
                 <Nav.Link href={RouteConstants.HOME_PAGE}>
-                  <HiHome size={28} color={primaryColor} />
+                  <HiHome
+                    size={28}
+                    color={section === 0 ? primaryColor : textColor}
+                  />
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ marign: "0 113px" }}>
@@ -66,14 +69,17 @@ function Header() {
                       : "/c/jobs"
                   }
                 >
-                  <HiOutlineBriefcase size={28} color="#3f5e60" />
+                  <HiOutlineBriefcase
+                    size={28}
+                    color={section === 1 ? primaryColor : textColor}
+                  />
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ gap: "23px" }}>
                 <Nav.Link href={RouteConstants.MESSAGING_PAGE}>
                   <i
                     className="fa-regular fa-comment-dots fs-4"
-                    style={{ color: "#3f5e60" }}
+                    style={{ color: section === 2 ? primaryColor : textColor }}
                   ></i>
                 </Nav.Link>
               </Col>
@@ -87,7 +93,7 @@ function Header() {
                 >
                   <i
                     className="fa-regular fa-bell fs-4"
-                    style={{ color: "#3f5e60" }}
+                    style={{ color: section === 3 ? primaryColor : textColor }}
                   ></i>
                 </Nav.Link>
               </Col>
@@ -96,7 +102,7 @@ function Header() {
                 <Nav.Link href={`/${user.username}`}>
                   <i
                     className="fa-regular fa-user fs-4"
-                    style={{ color: "#3f5e60" }}
+                    style={{ color: section === 4 ? primaryColor : textColor }}
                   ></i>
                 </Nav.Link>
               </Col>

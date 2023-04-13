@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import CompForm from "./CompForm";
 import JobForm from "./JobForm";
 import Skills from "./Skills";
 import FinalModal from "./FinalModal";
 
-function PostJob() {
+function PostJob({ changeSection }) {
   const [section, setSection] = useState(0);
   const [lgShow, setLgShow] = useState(false);
   const [job, setJob] = useState({
@@ -23,7 +23,9 @@ function PostJob() {
     desc: null,
     pdf: null,
   });
-
+  useEffect(() => {
+    changeSection(1);
+  }, [changeSection]);
   const changeHandler = (e) => {
     setJob({
       ...job,

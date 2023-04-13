@@ -1,8 +1,10 @@
-import React from "react";
-import { Modal } from "react-bootstrap";
-import JobDesc from "../../common/Job/JobDesc";
+import React, { useContext } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { ThemeContext } from "../../../context/Theme/ThemeContext";
+import VerifyJob from "./VerifyJob";
 
 function FinalModal({ lgShow, setLgShow, job }) {
+  const { primaryColor } = useContext(ThemeContext);
   return (
     <div>
       <Modal
@@ -11,14 +13,17 @@ function FinalModal({ lgShow, setLgShow, job }) {
         onHide={() => setLgShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
       >
-        <Modal.Header closeButton>
+        <Modal.Header style={{ height: "10vh" }} closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
             Confirm Details
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <JobDesc />
+          <VerifyJob />
         </Modal.Body>
+        <Modal.Footer style={{ height: "10vh" }}>
+          <Button style={{ backgroundColor: primaryColor }}>Submit</Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
