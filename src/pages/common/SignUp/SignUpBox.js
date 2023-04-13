@@ -10,7 +10,6 @@ import styles from "./Signup.module.css";
 function SignUpBox() {
   const { primaryColor } = useContext(ThemeContext);
   const { dispatch } = useContext(AuthContext);
-  const [isIndividual, setIsIndividual] = useState(0);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -18,7 +17,7 @@ function SignUpBox() {
     fname: "",
     cname: "",
     lname: "",
-    isIndividual: isIndividual,
+    isIndividual: 0,
   });
   const navigate = useNavigate();
 
@@ -57,10 +56,11 @@ function SignUpBox() {
 
       <Tabs
         fill
-        defaultActiveKey={isIndividual}
+        defaultActiveKey={0}
         className={cx(styles.myClass, "mb-3")}
         onSelect={(e) => {
-          setIsIndividual(e);
+          console.log(e);
+          setForm({...form,isIndividual:parseInt(e)})
         }}
       >
         <Tab eventKey={0} title="Individual">

@@ -13,6 +13,7 @@ export default class RouteConstants {
   static NOTIFICATION_PAGE = "/notification";
   static PROFILE_PAGE = "/:username";
   static JOBS_EMPLOYEE = "/jobs";
+  static JOBS_COMPANY = "/c/jobs";
   static JOB_DETAILS_PAGE = "/jobs/details/:jid";
   static POST_JOB = "/postjob";
 }

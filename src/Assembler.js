@@ -70,9 +70,14 @@ const Assembler = () => {
       access: RoleConstants.EMPLOYEE,
     },
     {
+      route: RouteConstants.JOBS_COMPANY,
+      component: <Job />,
+      access: RoleConstants.COMPANY,
+    },
+    {
       route: RouteConstants.POST_JOB,
       component: <PostJob />,
-      access: RoleConstants.EMPLOYEE,
+      access: RoleConstants.COMPANY,
     },
     {
       route: RouteConstants.PROFILE_PAGE,

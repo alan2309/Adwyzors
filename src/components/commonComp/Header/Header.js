@@ -5,6 +5,8 @@ import { HiHome, HiOutlineBriefcase } from "react-icons/hi";
 import { AuthContext } from "../../../context/AuthContext";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import Logo from "../../img/logo.svg";
+import RoleConstants from "../../../constants/RoleConstants";
+import RouteConstants from "../../../constants/RouteConstants";
 function Header() {
   const { user, dispatch } = useContext(AuthContext);
   const { primaryColor } = useContext(ThemeContext);
@@ -21,7 +23,7 @@ function Header() {
     >
       <Container style={{ margin: "0 10%" }}>
         <Navbar.Brand
-          href="/home"
+          href={RouteConstants.HOME_PAGE}
           style={{
             fontFamily: "Merriweather",
             fontStyle: "normal",
@@ -52,17 +54,23 @@ function Header() {
               }}
             >
               <Col className="d-flex gap-2">
-                <Nav.Link href="/home">
+                <Nav.Link href={RouteConstants.HOME_PAGE}>
                   <HiHome size={28} color={primaryColor} />
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ marign: "0 113px" }}>
-                <Nav.Link href="/jobs">
+                <Nav.Link
+                  href={
+                    user.userRole === RoleConstants.EMPLOYEE
+                      ? "/jobs"
+                      : "/c/jobs"
+                  }
+                >
                   <HiOutlineBriefcase size={28} color="#3f5e60" />
                 </Nav.Link>
               </Col>
               <Col className="d-flex" style={{ gap: "23px" }}>
-                <Nav.Link href="/chats">
+                <Nav.Link href={RouteConstants.MESSAGING_PAGE}>
                   <i
                     className="fa-regular fa-comment-dots fs-4"
                     style={{ color: "#3f5e60" }}
@@ -70,7 +78,13 @@ function Header() {
                 </Nav.Link>
               </Col>
               <Col>
-                <Nav.Link href="/notification">
+                <Nav.Link
+                  href={
+                    user.userRole === RoleConstants.ADMIN
+                      ? RouteConstants.ADMIN_NOTIFICATION_PAGE
+                      : RouteConstants.NOTIFICATION_PAGE
+                  }
+                >
                   <i
                     className="fa-regular fa-bell fs-4"
                     style={{ color: "#3f5e60" }}
