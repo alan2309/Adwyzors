@@ -9,9 +9,9 @@ import Useroptions from "./HomeFolder/Useroptions";
 
 function Home() {
   return (
-    <div className="">
-      <Container className="px-5">
-        <Row className="px-5">
+    <div style={{ "margin": "auto 17rem" }}>
+      <Container className="">
+        <Row className="">
           <Col lg={4} className="p-3 py-4 d-flex flex-column gap-4">
             <HomeContainer>
               <HomeUser />
