@@ -75,6 +75,16 @@ const AuthReducer = (state, action) => {
         },
         isFetching: false,
       };
+    case "POST_JOB_START":
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case "POST_JOB_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+      };
     default:
       return state;
   }

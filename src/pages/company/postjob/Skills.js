@@ -1,11 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import { RxCross2 } from "react-icons/rx";
 
 function Skills({ job, changeHandler, setLgShow, setJob }) {
   const { primaryColor } = useContext(ThemeContext);
+  const [skill, setSkill] = useState("");
   // const[fileName,setFileName] = useState("Upload Resume")
+
+  const addSkills = (e) => {
+    e.preventDefault();
+    setJob({
+      ...job,
+      skills: [...job.skills, skill],
+    });
+    setSkill("");
+  };
+  const deleteSkill = (e, id) => {
+    e.preventDefault();
+    job.skills.splice(id, 1);
+    setJob({
+      ...job,
+      skills: job.skills,
+    });
+  };
   return (
     <div className="p-4">
       <Form>
@@ -21,13 +39,17 @@ function Skills({ job, changeHandler, setLgShow, setJob }) {
               <Form.Control
                 type="text"
                 placeholder=""
-                name="location"
-                value={job.location}
-                onChange={changeHandler}
+                name="skills"
+                value={skill}
+                onChange={(e) => {
+                  setSkill(e.target.value);
+                }}
               />
             </Col>
             <Col md={2}>
-              <Button>ADD</Button>
+              <Button type="submit" onClick={addSkills}>
+                ADD
+              </Button>
             </Col>
           </Row>
 
@@ -56,6 +78,7 @@ function Skills({ job, changeHandler, setLgShow, setJob }) {
                     <RxCross2
                       className="mb-1"
                       color="black"
+                      onClick={(e) => deleteSkill(e, index)}
                       style={{ marginLeft: "10px", cursor: "pointer" }}
                     />
                   </div>

@@ -1,5 +1,17 @@
 import RoleConstants from "./constants/RoleConstants";
 import axiosInstance from "./axios";
+
+export const postJobCall = async (jobDetail, dispatch) => {
+  dispatch({ type: "POST_JOB_START" });
+  try {
+    await axiosInstance.post("/jobs/", jobDetail);
+    dispatch({ type: "POST_JOB_SUCCESS", payload: null });
+    return null;
+  } catch (err) {
+    return err;
+  }
+};
+
 export const signInCall = async (userCredential, dispatch) => {
   dispatch({ type: "REGISTER_START" });
   try {
