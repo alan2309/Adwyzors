@@ -1,9 +1,28 @@
-.fixedBottom{
+.fixedBottom {
   position: fixed;
   bottom: 0px;
 }
 
-.bottomDiv{
+.bottomDiv {
   border-radius: 22px 22px 0 0;
   /* z-index: 1000!important; */
+}
+.jobPic {
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  box-shadow: 0px 3px 5px darkgrey;
+}
+#expPic,
+#expPicData {
+  float: left !important;
+}
+#expPic {
+  width: 15% !important;
+}
+#expPicData {
+  width: 75% !important;
 }

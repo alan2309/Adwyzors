@@ -1,6 +1,9 @@
-.input{
+.input {
   -webkit-appearance: none;
-  border: 0;
+}
+.input:hover {
+  background-color: #eeeeee !important;
+  border-color: #9eafb0 !important;
 }
 
 .input:focus {
@@ -8,6 +11,7 @@
   /* border-bottom: 1px solid #3F5E60; */
 }
 
-.iconCol, .greyTxt {
-  color: #3F5E60;
+.iconCol,
+.greyTxt {
+  color: #3f5e60;
 }
