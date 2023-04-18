@@ -5,46 +5,50 @@ import Globe from "../../../components/img/globe.svg";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import styles from "./Job.module.css";
 
-const jobdata = [
-  {
-    jobImg:
-      "https://media.licdn.com/dms/image/C560BAQE9wp87-KDfwg/company-logo_100_100/0/1657054972290?e=1689206400&v=beta&t=ZSewmc1etlM4cn7RNGjJ6GUqtt2gYrWx1_bteolA4wU",
-    jobTitle: "Back-end Software Engineer",
-    jobCompany: "Think360",
-    jobLocation: "Remote",
-    jobPostedAgo: "3 hrs ago",
-  },
-  {
-    jobImg:
-      "https://media.licdn.com/dms/image/C560BAQGzaKzBYzdDvw/company-logo_100_100/0/1656682279077?e=1689206400&v=beta&t=LyK_bdRUVUh7OttEL5CO3VUyt09EqXKyFtyu-xXivEg",
-    jobTitle: "UX/UI designer",
-    jobCompany: "Upwork",
-    jobLocation: "Mumbai, Maharashtra, India",
-    jobPostedAgo: "13 hrs ago",
-  },
-  {
-    jobImg:
-      "https://media.licdn.com/dms/image/C560BAQE9wp87-KDfwg/company-logo_100_100/0/1657054972290?e=1689206400&v=beta&t=ZSewmc1etlM4cn7RNGjJ6GUqtt2gYrWx1_bteolA4wU",
-    jobTitle: "Back-end Software Engineer",
-    jobCompany: "Think360",
-    jobLocation: "Remote",
-    jobPostedAgo: "3 hrs ago",
-  },
-  {
-    jobImg:
-      "https://media.licdn.com/dms/image/C560BAQGzaKzBYzdDvw/company-logo_100_100/0/1656682279077?e=1689206400&v=beta&t=LyK_bdRUVUh7OttEL5CO3VUyt09EqXKyFtyu-xXivEg",
-    jobTitle: "UX/UI designer",
-    jobCompany: "Upwork",
-    jobLocation: "Mumbai, Maharashtra, India",
-    jobPostedAgo: "13 hrs ago",
-  },
-];
+// const jobdata = [
+//   {
+//     jobImg:
+//       "https://media.licdn.com/dms/image/C560BAQE9wp87-KDfwg/company-logo_100_100/0/1657054972290?e=1689206400&v=beta&t=ZSewmc1etlM4cn7RNGjJ6GUqtt2gYrWx1_bteolA4wU",
+//     jobTitle: "Back-end Software Engineer",
+//     jobCompany: "Think360",
+//     jobLocation: "Remote",
+//     jobPostedAgo: "3 hrs ago",
+//   },
+//   {
+//     jobImg:
+//       "https://media.licdn.com/dms/image/C560BAQGzaKzBYzdDvw/company-logo_100_100/0/1656682279077?e=1689206400&v=beta&t=LyK_bdRUVUh7OttEL5CO3VUyt09EqXKyFtyu-xXivEg",
+//     jobTitle: "UX/UI designer",
+//     jobCompany: "Upwork",
+//     jobLocation: "Mumbai, Maharashtra, India",
+//     jobPostedAgo: "13 hrs ago",
+//   },
+//   {
+//     jobImg:
+//       "https://media.licdn.com/dms/image/C560BAQE9wp87-KDfwg/company-logo_100_100/0/1657054972290?e=1689206400&v=beta&t=ZSewmc1etlM4cn7RNGjJ6GUqtt2gYrWx1_bteolA4wU",
+//     jobTitle: "Back-end Software Engineer",
+//     jobCompany: "Think360",
+//     jobLocation: "Remote",
+//     jobPostedAgo: "3 hrs ago",
+//   },
+//   {
+//     jobImg:
+//       "https://media.licdn.com/dms/image/C560BAQGzaKzBYzdDvw/company-logo_100_100/0/1656682279077?e=1689206400&v=beta&t=LyK_bdRUVUh7OttEL5CO3VUyt09EqXKyFtyu-xXivEg",
+//     jobTitle: "UX/UI designer",
+//     jobCompany: "Upwork",
+//     jobLocation: "Mumbai, Maharashtra, India",
+//     jobPostedAgo: "13 hrs ago",
+//   },
+// ];
 
-const JobCard = ({ job, index }) => {
+const JobCard = ({ job, index, viewJob }) => {
   const { textColor } = useContext(ThemeContext);
 
   return (
-    <Row key={index}>
+    <Row
+      key={index}
+      style={{ cursor: "pointer" }}
+      onClick={() => viewJob(index) || null}
+    >
       <div
         id={styles.expPic}
         style={{
@@ -57,7 +61,7 @@ const JobCard = ({ job, index }) => {
         <div
           className={styles.jobPic}
           style={{
-            backgroundImage: `url(${job.jobImg || Globe})`,
+            backgroundImage: `url(${job.company_pic || Globe})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
@@ -75,7 +79,7 @@ const JobCard = ({ job, index }) => {
             marginBottom: "5px",
           }}
         >
-          {job.jobTitle}
+          {job.title}
         </Row>
         <Row style={{ marginBottom: "3px" }}>
           <Col
@@ -89,7 +93,7 @@ const JobCard = ({ job, index }) => {
               lineHeight: "21px",
             }}
           >
-            {job.jobCompany}
+            {job.name}
           </Col>
         </Row>
         <Row style={{ color: "grey" }}>
@@ -102,7 +106,7 @@ const JobCard = ({ job, index }) => {
               lineHeight: "21px",
             }}
           >
-            <GoLocation size={13} /> {job.jobLocation}
+            <GoLocation size={13} /> {job.location}
           </Col>
         </Row>
         <Row style={{ marginBottom: "3px" }}>
@@ -116,7 +120,7 @@ const JobCard = ({ job, index }) => {
               lineHeight: "21px",
             }}
           >
-            {job.jobPostedAgo}
+            13hrs ago
           </Col>
         </Row>
       </div>
@@ -125,7 +129,7 @@ const JobCard = ({ job, index }) => {
   );
 };
 
-function JobOpportunity() {
+function JobOpportunity({ jobs, viewJob }) {
   const { primaryColor } = useContext(ThemeContext);
   return (
     <Row>
@@ -159,9 +163,11 @@ function JobOpportunity() {
           padding: "5px 0 0px 0",
         }}
       >
-        {jobdata.length > 0 &&
-          jobdata.map((job, index) => {
-            return <JobCard key={index} job={job} index={index} />;
+        {jobs.length > 0 &&
+          jobs.map((job, index) => {
+            return (
+              <JobCard key={index} job={job} index={index} viewJob={viewJob} />
+            );
           })}
       </Row>
     </Row>

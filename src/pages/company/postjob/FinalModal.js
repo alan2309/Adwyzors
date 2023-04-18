@@ -28,6 +28,7 @@ function FinalModal({ lgShow, setLgShow, job }) {
 
     let data = {
       title: job.title,
+      name: user.cname,
       company_link: job.comp_web,
       company_id: user._id,
       company_pic: user.profilePicture,

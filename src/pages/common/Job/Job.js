@@ -7,17 +7,29 @@ import { Form } from "react-bootstrap";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import RoleConstants from "../../../constants/RoleConstants";
+import axiosInstance from "../../../axios";
 
 function Job({ changeSection }) {
   const [hover, setHover] = useState(false);
   const [active, setActive] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [jobs, setJobs] = useState([]);
   const { primaryColor, textColor } = useContext(ThemeContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     changeSection(1);
+    const data = async () =>
+      await axiosInstance.get("/jobs/all").then((res) => {
+        setJobs(res.data);
+      });
+    data();
   }, [changeSection]);
+
+  const viewJob = (id) => {
+    setIndex(id);
+  };
   return (
     <div>
       <Row className="mt-3 mb-2 d-flex justify-content-center">
@@ -86,18 +98,22 @@ function Job({ changeSection }) {
           </Button>
         </Col>
       </Row>
-      <Row className="mx-2 mt-1 d-flex justify-content-center">
-        <Col
-          className="mx p-2 bg-white"
-          style={{ borderRadius: "15px" }}
-          md={3}
-        >
-          <JobOpportunity />
-        </Col>
-        <Col md={6}>
-          <JobDesc />
-        </Col>
-      </Row>
+      {jobs.length !== 0 ? (
+        <Row className="mx-2 mt-1 d-flex justify-content-center">
+          <Col
+            className="mx p-2 bg-white"
+            style={{ borderRadius: "15px" }}
+            md={3}
+          >
+            <JobOpportunity jobs={jobs} viewJob={viewJob} />
+          </Col>
+          <Col md={6}>
+            <JobDesc job={jobs[index]} />
+          </Col>
+        </Row>
+      ) : (
+        <>No Jobs Posted Yet</>
+      )}
     </div>
   );
 }

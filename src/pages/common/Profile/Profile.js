@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import HomeContainer from "../HomeFolder/HomeContainer";
 import styles from "./CoverPhoto.module.css";
@@ -8,11 +8,28 @@ import AboutMe from "./AboutMe";
 import Education from "./Education";
 import Experience from "./Experience";
 import ProfilePicData from "./ProfilePicData";
+import axiosInstance from "../../../axios";
+import { useNavigate } from "react-router-dom";
+import RoleConstants from "../../../constants/RoleConstants";
+import { AuthContext } from "../../../context/AuthContext";
 
 function Profile({ changeSection }) {
+  const [jobs, setJobs] = useState([]);
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
     changeSection(4);
+    const data = async () =>
+      await axiosInstance.get("/jobs/all").then((res) => {
+        setJobs(res.data);
+      });
+    data();
   }, [changeSection]);
+  const navigate = useNavigate();
+  const viewJob = () => {
+    if (user.userRole === RoleConstants.EMPLOYEE) navigate("/e/jobs");
+    else navigate("/c/jobs");
+  };
 
   const expdata = [
     {
@@ -94,7 +111,7 @@ function Profile({ changeSection }) {
                 className="d-flex flex-column gap-3"
                 style={{ margin: 0, padding: 0 }}
               >
-                <JobOpportunity />
+                <JobOpportunity jobs={jobs} viewJob={viewJob} />
               </Container>
             </HomeContainer>
           </Col>

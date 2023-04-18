@@ -25,7 +25,7 @@ function VerifyJob({ job }) {
           />
         </Col>
         <Col className="pt-1" md={5}>
-          <p style={{ fontSize: "20px", fontWeight: "600" }}>Think360</p>
+          <p style={{ fontSize: "20px", fontWeight: "600" }}>{job.comp_name}</p>
           <p style={{ fontSize: "13px", fontWeight: "500", color: "grey" }}>
             {job.title} ({job.job_type})
           </p>
