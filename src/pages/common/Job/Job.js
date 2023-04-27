@@ -18,7 +18,6 @@ import {
 } from "react-share";
 
 function MyVerticallyCenteredModal(props) {
-  const url = `http://localhost:3000/c/jobs?jobId=${props.id}`;
   return (
     <Modal
       {...props}
@@ -32,12 +31,14 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <WhatsappShareButton url={url}>
+        <WhatsappShareButton
+          url={`http://localhost:3000/c/jobs?jobId=${props.id}`}
+        >
           <WhatsappIcon round />
         </WhatsappShareButton>
 
         <FacebookShareButton
-          //  url={url}
+          //  url={`http://localhost:3000/c/jobs?jobId=${props.id}`}
           url="www.google.com"
           hashtag={"#hashtag"}
           description={"Job Opening"}
@@ -47,7 +48,7 @@ function MyVerticallyCenteredModal(props) {
 
         <TwitterShareButton
           title={"Job Opening at"}
-          url={url}
+          url={`http://localhost:3000/c/jobs?jobId=${props.id}`}
           hashtags={["hashtag1", "hashtag2"]}
         >
           <TwitterIcon round />
@@ -71,6 +72,7 @@ function Job({ changeSection }) {
     const data = async () =>
       await axiosInstance.get("/jobs/all").then((res) => {
         setJobs(res.data);
+        setIndex(0);
       });
     data();
   }, [changeSection]);
@@ -80,11 +82,15 @@ function Job({ changeSection }) {
   };
   return (
     <div>
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        id={jobs[index]._id}
-        onHide={() => setModalShow(false)}
-      />
+      {jobs[index] !== undefined ? (
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          id={jobs[index]._id}
+          onHide={() => setModalShow(false)}
+        />
+      ) : (
+        <></>
+      )}
       <Row className="mt-3 mb-2 d-flex justify-content-center">
         <Col className="d-flex justify-content-between" md={3}>
           <Button
