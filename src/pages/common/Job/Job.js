@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Modal } from "react-bootstrap";
 import JobOpportunity from "./JobOpportunity";
 import JobDesc from "./JobDesc";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
@@ -8,6 +8,54 @@ import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import RoleConstants from "../../../constants/RoleConstants";
 import axiosInstance from "../../../axios";
+import {
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterShareButton,
+  TwitterIcon,
+} from "react-share";
+
+function MyVerticallyCenteredModal(props) {
+  const url = `http://localhost:3000/c/jobs?jobId=${props.id}`;
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Share With......
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <WhatsappShareButton url={url}>
+          <WhatsappIcon round />
+        </WhatsappShareButton>
+
+        <FacebookShareButton
+          //  url={url}
+          url="www.google.com"
+          hashtag={"#hashtag"}
+          description={"Job Opening"}
+        >
+          <FacebookIcon round />
+        </FacebookShareButton>
+
+        <TwitterShareButton
+          title={"Job Opening at"}
+          url={url}
+          hashtags={["hashtag1", "hashtag2"]}
+        >
+          <TwitterIcon round />
+        </TwitterShareButton>
+      </Modal.Body>
+    </Modal>
+  );
+}
 
 function Job({ changeSection }) {
   const [hover, setHover] = useState(false);
@@ -17,7 +65,7 @@ function Job({ changeSection }) {
   const { primaryColor, textColor } = useContext(ThemeContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const [modalShow, setModalShow] = React.useState(false);
   useEffect(() => {
     changeSection(1);
     const data = async () =>
@@ -32,6 +80,11 @@ function Job({ changeSection }) {
   };
   return (
     <div>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        id={jobs[index]._id}
+        onHide={() => setModalShow(false)}
+      />
       <Row className="mt-3 mb-2 d-flex justify-content-center">
         <Col className="d-flex justify-content-between" md={3}>
           <Button
@@ -108,7 +161,7 @@ function Job({ changeSection }) {
             <JobOpportunity jobs={jobs} viewJob={viewJob} />
           </Col>
           <Col md={6}>
-            <JobDesc job={jobs[index]} />
+            <JobDesc setModalShow={setModalShow} job={jobs[index]} />
           </Col>
         </Row>
       ) : (

@@ -12,19 +12,6 @@ function FinalModal({ lgShow, setLgShow, job }) {
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
-    // title: null,
-    // comp_name: null,
-    // comp_web: null,
-    // exp: 0,
-    // location: null,
-    // email: null,
-    // job_type: null,
-    // skills: ["frontend", "backend", "ui/ux", "cyber-sec"],
-    // salary_min: 0,
-    // salary_max: 0,
-    // deadline: null,
-    // desc: null,
-    // pdf: null,
 
     let data = {
       title: job.title,

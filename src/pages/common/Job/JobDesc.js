@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import prof from "./prof.png";
+import { BiShare } from "react-icons/bi";
 
-function JobDesc({ job }) {
+function JobDesc({ job, setModalShow }) {
   const [hover, setHover] = useState(false);
-  const { primaryColor } = useContext(ThemeContext);
+  const { primaryColor, textColor } = useContext(ThemeContext);
   return (
     <div
       className="bg-white mt-1 pt-3 ps-3 pb-2"
@@ -25,13 +26,13 @@ function JobDesc({ job }) {
             alt="profilepic"
           />
         </Col>
-        <Col className="pt-1" md={5}>
+        <Col className="pt-1 mt-2" md={5}>
           <p style={{ fontSize: "20px", fontWeight: "600" }}>{job.name}</p>
           <p style={{ fontSize: "13px", fontWeight: "500", color: "grey" }}>
             {job.title} ({job.job_type})
           </p>
         </Col>
-        <Col md={3}>
+        <Col md={3} className="mt-2">
           <Button
             style={{
               borderColor: primaryColor,
@@ -43,6 +44,15 @@ function JobDesc({ job }) {
           >
             Apply now
           </Button>
+        </Col>
+        <Col md={1}>
+          <BiShare
+            className="mt-2"
+            size={25}
+            color={textColor}
+            style={{ cursor: "pointer" }}
+            onClick={() => setModalShow(true)}
+          />
         </Col>
       </Row>
       <Row className="mt-3 ms-4">
