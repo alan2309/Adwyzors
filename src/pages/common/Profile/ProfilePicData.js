@@ -1,16 +1,97 @@
-import React, { useContext } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Button, Col, Row, Modal, Form } from "react-bootstrap";
 import { FiDownload } from "react-icons/fi";
 import { MdModeEdit } from "react-icons/md";
-import { AuthContext } from "../../../context/AuthContext";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import styles from "./CoverPhoto.module.css";
 
-function ProfilePicData() {
+function ProfilePicData({
+  edit,
+  prof,
+  prof2,
+  postChange,
+  profChange,
+  setProf2,
+}) {
   const { primaryColor, textColor } = useContext(ThemeContext);
-  const { user } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <Row>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>
+                {prof.cname ? "Display Name" : "First Name"}
+              </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={prof2.cname ? prof2.cname : prof2.fname}
+                value={prof2.cname ? prof2.cname : prof2.fname}
+                onChange={profChange}
+                name={prof2.cname ? "cname" : "fname"}
+                autoFocus
+              />
+            </Form.Group>
+            {prof2.cname && prof2.fname === undefined ? (
+              <></>
+            ) : (
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="lname"
+                  placeholder={prof2.lname}
+                  onChange={profChange}
+                  value={prof2.lname}
+                />
+              </Form.Group>
+            )}
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                name="desc"
+                rows={3}
+                placeholder={prof2.desc}
+                onChange={profChange}
+                value={prof2.desc}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              handleClose();
+              setProf2({ ...prof });
+            }}
+          >
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              postChange(prof2);
+            }}
+          >
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Col
         id={styles.proCol}
         md={4}
@@ -44,7 +125,7 @@ function ProfilePicData() {
             }}
           >
             {" "}
-            #OpenToWork
+            {prof.isOpenToWork ? "#OpenToWork" : ""}
           </p>
           <Col md={9} style={{ margin: 0, padding: 0 }}>
             <h4
@@ -55,7 +136,7 @@ function ProfilePicData() {
                 fontWeight: "bolder",
               }}
             >
-              {user.fname} {user.lname}
+              {prof.cname ? prof.cname : prof.fname + " " + prof.lname}
             </h4>
             <h4
               style={{
@@ -64,15 +145,24 @@ function ProfilePicData() {
                 fontSize: "15px",
               }}
             >
-              UI/UX Designer | Student | Winner at XYZ College | Rank 12 All
-              over India
+              {edit ? (prof.desc ? prof.desc : "Write a Caption....") : ""}
             </h4>
           </Col>
           <Col md={3}>
-            <Row style={{ float: "right", paddingRight: "5%" }}>
+            <Row
+              style={{ float: "right", paddingRight: "5%", cursor: "pointer" }}
+            >
               <Col>
                 <Row>
-                  <MdModeEdit size={25} color={textColor} />
+                  {edit ? (
+                    <MdModeEdit
+                      size={25}
+                      color={textColor}
+                      onClick={handleShow}
+                    />
+                  ) : (
+                    <></>
+                  )}
                 </Row>
                 <Row>
                   {" "}
