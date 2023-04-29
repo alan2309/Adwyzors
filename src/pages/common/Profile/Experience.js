@@ -323,7 +323,7 @@ function Experience({ edit, expData, postChange }) {
           </Col>
         </Row>
         <Row>
-          {edit ? (
+          {
             expData.length > 0 ? (
               expData.map((job, index) => {
                 return <ExpCard job={job} index={index} />;
@@ -331,9 +331,7 @@ function Experience({ edit, expData, postChange }) {
             ) : (
               <>Add Your Education History</>
             )
-          ) : (
-            <>No Education Information</>
-          )}
+         }
         </Row>
       </Container>
     </Row>

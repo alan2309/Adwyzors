@@ -270,17 +270,15 @@ function Education({ eduData, edit, postChange }) {
           </Col>
         </Row>
         <Row>
-          {edit ? (
+          {
             eduData.length > 0 ? (
               eduData.map((edu, index) => {
                 return <EduCard edu={edu} index={index} />;
               })
             ) : (
               <>Add Your Education History</>
-            )
-          ) : (
-            <>No Education Information</>
-          )}
+            ) 
+          }
         </Row>
       </Container>
     </Row>

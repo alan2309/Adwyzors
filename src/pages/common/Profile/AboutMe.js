@@ -84,11 +84,10 @@ function AboutMe({ edit, prof, prof2, postChange, profChange, setProf2 }) {
         </Row>
         <Row>
           <Col style={{ color: textColor, paddingLeft: "10px" }}>
-            {edit
-              ? prof.about
+            {prof.about
                 ? prof.about
                 : "Write Something About Yourself"
-              : "No Description"}
+             }
             {/* Freelance UX/UI designer, 80+ projects in web design, mobile apps
             (iOS & android) and creative projects. Open to offers. */}
           </Col>

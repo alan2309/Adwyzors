@@ -26,6 +26,7 @@ function Profile({ changeSection }) {
       await axiosInstance
         .get(`/users?username=${username}`)
         .then((res) => {
+          console.log(res.data)
           setProf(res.data);
           setProf2(res.data);
           setEdit(res.data._id === user._id ? true : false);

@@ -145,7 +145,7 @@ function ProfilePicData({
                 fontSize: "15px",
               }}
             >
-              {edit ? (prof.desc ? prof.desc : "Write a Caption....") : ""}
+              {prof.desc ? prof.desc : "Write a Caption...."}
             </h4>
           </Col>
           <Col md={3}>
