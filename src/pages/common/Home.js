@@ -1,9 +1,13 @@
 import cx from "classnames";
 import React, { useContext, useState } from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
+import { RxCrossCircled } from "react-icons/rx";
+import Slider from "react-slick";
 import styled from "styled-components";
-import { v4 as uuid } from "uuid";
+import axiosInstance from "../../axios";
+import { AuthContext } from "../../context/AuthContext";
 import { ThemeContext } from "../../context/Theme/ThemeContext";
+import profImage from "../../images/user-image.png";
 import styles from "./Home.module.css";
 import HomeContainer from "./HomeFolder/HomeContainer";
 import HomeDiscussion from "./HomeFolder/HomeDiscussion";
@@ -13,110 +17,55 @@ import TopInput from "./HomeFolder/TopInput";
 import Useroptions from "./HomeFolder/Useroptions";
 
 function Home() {
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+  };
   const { textColor } = useContext(ThemeContext);
   const [show, setShow] = useState(false);
   const [postBtn, setPostBtn] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const postIt = async () => {
-    if (!postBtn) return;
-    setPostBtn(false);
-    //const allFiles = document.querySelectorAll("img.prev");
-    const text = document.querySelector(".text-area").value.trim().split("\n");
-    const allImages = [];
-
-    document.querySelector("#user-post .post").innerHTML =
-      "<img src='/gif/loading.gif' />";
-    //for (let file of allFiles) {
-    //  const data = file.src;
-    //  const Request = await fetch(
-    //    `${API}/api/post/image?token=${localStorage.getItem("token")}`,
-    //    {
-    //      method: "POST",
-    //      headers: { Accepts: "application/json", "Content-Type": "application/json" },
-    //      body: JSON.stringify({ extension: file.dataset["ext"], data }),
-    //    }
-    //  );
-
-    //  const res = await Request.json();
-    //  if (!res.success) {
-    //    alert("something went wrong");
-    //    console.log(res.error);
-    //    return;
-    //  }
-
-    //  allImages.push(res.link);
-    //}
-
-    await Request(text, allImages);
+  const [dataUri, setDataUri] = useState([]);
+  const [photoFile, setPhotoFile] = useState([]);
+  const handleClose = () => {
+    setPhotoFile([]);
+    setDataUri([]);
+    setShow(false);
   };
-  const clearImg = (id) => {
-    const Div = document.getElementById(id);
-    const fileInput = document.getElementById("file-input");
-    const allImgsInPrev = document.querySelectorAll("div.prev").length;
-    if (allImgsInPrev - 1 <= 0) setPostBtn(false);
-    fileInput.value = "";
-    Div.remove();
+  const handleShow = () => setShow(true);
+  const { user } = useContext(AuthContext);
+  const postIt = async () => {
+    const text = document.querySelector(".text-area").value.trim();
+    const res = await axiosInstance
+      .post("/posts/", { user: user?._id, desc: text, img: photoFile })
+      .catch((err) => {
+        console.log(err);
+      });
+    if (res) {
+      setShow(false);
+      window.location.reload();
+    }
+  };
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPhotoFile((obj) => [...obj, reader.result]);
+    };
   };
 
   const previewImg = (fileInput) => {
-    const validExtension = ["gif", "png", "jpg", "jpeg", "webp"];
-    console.log(fileInput.files);
-    const split = fileInput.files[0].name.split(".");
-    const fileExtenstion = split[split.length - 1];
-    const allPrevs = document.querySelectorAll("div.prev").length;
-    if (allPrevs >= 6) {
-      console.log("Maximum 6 files");
+    for (let i = 0; i < fileInput.files.length; i++) {
+      let file = fileInput.files.item(i);
 
-      return;
-    }
-
-    if (fileInput.files[0].size / 1000000 > 5) {
-      console.log("Maximum file size: 5mb");
-      return;
-    }
-
-    for (let i = 0; i < validExtension.length; i++) {
-      if (validExtension[i] === fileExtenstion) {
-        break;
-      }
-
-      if (i + 1 === validExtension.length) {
-        console.log("Valid Extension: gif, png, jpg, jpeg, webp");
-        return;
+      if (file) {
+        setDataUri((obj) => [...obj, URL.createObjectURL(file)]);
+        setFileToBase(file);
       }
     }
-    const ID = "img-" + uuid();
-    const imgPreviewer = document.querySelector(".img-previewer");
-
-    const DivElem = document.createElement("div");
-    DivElem.setAttribute("id", ID);
-    DivElem.setAttribute("class", "prev col-md-6");
-
-    const ImgElem = document.createElement("img");
-    ImgElem.setAttribute("class", "prev");
-    ImgElem.style.height = "170px";
-    ImgElem.setAttribute("data-ext", fileExtenstion);
-    ImgElem.src = "/gif/loading.gif";
-
-    const CloseBtn = document.createElement("button");
-    CloseBtn.addEventListener("click", () => clearImg(ID));
-    CloseBtn.innerHTML = '<i class="fa-solid fa-xmark remove"></i>';
-
-    DivElem.appendChild(ImgElem);
-    DivElem.appendChild(CloseBtn);
-    imgPreviewer.appendChild(DivElem);
-    console.log(imgPreviewer);
-
-    const fR_Display = new FileReader();
-    fR_Display.readAsDataURL(fileInput.files[0]);
-    fR_Display.onloadend = (e) => {
-      const img = document.querySelector(`#${ID} img`);
-      img.src = e.target.result;
-      const scrollHeight = imgPreviewer.scrollHeight;
-      imgPreviewer.scrollTo(0, scrollHeight);
-      setPostBtn(true);
-    };
   };
 
   const getFile = () => {
@@ -214,7 +163,7 @@ function Home() {
               <div
                 className={styles.jobPic}
                 style={{
-                  backgroundImage: `url(${"https://media.licdn.com/dms/image/C5603AQERTD_EeJiGlA/profile-displayphoto-shrink_800_800/0/1661816468423?e=1686787200&v=beta&t=J5x0Fk6u_DyXGtgnQqh8vAjPXf1WLylDATD07O7NeMg"})`,
+                  backgroundImage: `url(${profImage})`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                 }}
@@ -235,7 +184,7 @@ function Home() {
                   marginBottom: "5px",
                 }}
               >
-                {"Chaitanya Kumbhar"}
+                {user?.fname + " " + user?.lname}
               </Row>
             </div>
           </Row>
@@ -264,6 +213,42 @@ function Home() {
               {" "}
               <Row className="img-previewer"></Row>
             </div>
+
+            <div
+              className={styles.modalPost}
+              style={{ padding: "10px 30px", position: "relative" }}
+            >
+              {dataUri.length > 0 && (
+                <RxCrossCircled
+                  size={25}
+                  style={{
+                    position: "absolute",
+                    right: "10px",
+                    top: "-20px",
+                    zIndex: 99999999999999,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setDataUri([]);
+                    setPhotoFile([]);
+                  }}
+                />
+              )}
+              <Slider {...settings}>
+                {dataUri.length > 0 &&
+                  dataUri.map((uri, index) => {
+                    return (
+                      <img
+                        width="200"
+                        height="200"
+                        src={uri}
+                        key={index}
+                        alt="avatar"
+                      />
+                    );
+                  })}
+              </Slider>
+            </div>
           </Row>
           <Foot className="foot">
             <i
@@ -276,6 +261,7 @@ function Home() {
                 type="file"
                 id="file-input"
                 accept="image/*"
+                multiple
                 onChange={(e) => {
                   previewImg(e.currentTarget);
                 }}
@@ -303,7 +289,11 @@ function Home() {
         <Row className="">
           <Col lg={4} className="p-3 py-4 d-flex flex-column gap-4">
             <HomeContainer>
-              <HomeUser />
+              <HomeUser
+                img={user?.profilePicture}
+                name={user?.fname + " " + user?.lname}
+                designation={user?.desc}
+              />
             </HomeContainer>
 
             <div
@@ -328,7 +318,10 @@ function Home() {
 
           {/* Right Home Side */}
 
-          <Col className="p-3 py-4 d-flex flex-column gap-4">
+          <Col
+            className="p-3 py-4 d-flex flex-column gap-4"
+            style={{ maxWidth: "60%" }}
+          >
             <HomeContainer>
               <TopInput handleShow={handleShow} />
             </HomeContainer>

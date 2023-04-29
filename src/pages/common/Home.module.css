@@ -26,3 +26,9 @@
 #expPicData {
   width: 75% !important;
 }
+
+  
+.modalPost button:before,
+.modalPost button:before {
+    color:black !important; 
+}

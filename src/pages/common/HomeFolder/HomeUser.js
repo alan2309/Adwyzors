@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import userImage from "../../../images/userImg.jpg";
+import userImage from "../../../images/user-image.png";
 
 const HomeUser = ({
   img = "#",
-  name = "Alankrit Arya",
+  name = "Person",
   designation = "Developer",
 }) => {
   return (
@@ -12,7 +12,20 @@ const HomeUser = ({
       <Container fluid>
         <Row>
           <Col lg={2} className="p-0 flex-center-center">
-            <img src={userImage} alt="profile-img" srcSet="" className="rounded-circle img-fluid" />
+            <img
+              src={img || userImage}
+              alt="profile-img"
+              srcSet=""
+              className="rounded-circle img-fluid"
+              style={{
+                borderRadius: "100%",
+                minWidth: "40px",
+                minHeight: "40px",
+                boxShadow: "0px 1px 1px darkgrey",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }}
+            />
           </Col>
           <Col></Col>
           <Col lg={8} className="p-0 d-flex align-items-center">

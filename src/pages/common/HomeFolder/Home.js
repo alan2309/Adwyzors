@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import HomeUser from "./HomeUser";
 import HomeContainer from "./HomeContainer";
 import Useroptions from "./Useroptions";
 import HomeDiscussion from "./HomeDiscussion";
+import { AuthContext } from "../../../context/AuthContext";
 
 function Home({ changeSection }) {
   useEffect(() => {
@@ -15,7 +16,11 @@ function Home({ changeSection }) {
         <Row>
           <Col lg={4} className="p-3 d-flex flex-column gap-4">
             <HomeContainer>
-              <HomeUser />
+              <HomeUser
+                img={"#"}
+                name={"Alankrit Arya"}
+                designation={"Developer"}
+              />
             </HomeContainer>
 
             <HomeContainer>
