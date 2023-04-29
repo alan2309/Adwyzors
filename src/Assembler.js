@@ -52,7 +52,7 @@ const Assembler = () => {
     },
     {
       route: RouteConstants.HOME_PAGE,
-      component: !user.auth ? <Home changeSection={changeSection} /> : <Login />, // Home : Login
+      component: user.auth ? <Home changeSection={changeSection} /> : <Login />, // Home : Login
       access: RoleConstants.ALL,
     },
     {
