@@ -3,7 +3,7 @@ import axios from "axios";
 const baseURL = "http://localhost:8800/api/";
 
 //const baseURL = "HOSTED_URL";
-const access_token = sessionStorage.getItem("access_token");
+const access_token = sessionStorage.getItem("access_token") || localStorage.getItem("access_token");
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
