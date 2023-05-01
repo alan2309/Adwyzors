@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Button, Col, Row, Modal, Form } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { FiDownload } from "react-icons/fi";
 import { MdModeEdit } from "react-icons/md";
+import axiosInstance from "../../../axios";
+import RoleConstants from "../../../constants/RoleConstants";
+import { AuthContext } from "../../../context/AuthContext.js";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import styles from "./CoverPhoto.module.css";
 
@@ -15,9 +18,15 @@ function ProfilePicData({
 }) {
   const { primaryColor, textColor } = useContext(ThemeContext);
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
+  const [resume, setResume] = useState();
+  const [resumeName, setResumeName] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
+  const { user, dispatch } = useContext(AuthContext);
   return (
     <Row>
       <Modal show={show} onHide={handleClose}>
@@ -91,6 +100,73 @@ function ProfilePicData({
             Save Changes
           </Button>
         </Modal.Footer>
+      </Modal>
+      <Modal show={show1} onHide={handleClose1}>
+        <Form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            console.log(resume);
+            user.userRole =
+              user.userRole === RoleConstants.EMPLOYEE
+                ? 0
+                : user.userRole === RoleConstants.COMPANY
+                ? 1
+                : 2;
+            const res = await axiosInstance
+              .put(`/users/uploadResume/${user._id}`, {
+                resume: resume,
+                resumeName: resumeName,
+                user: user,
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+            console.log(res);
+            if (res) {
+              dispatch({ type: "RESUME_UPLOAD_SUCCESS", payload: res.data });
+              handleClose1();
+              alert("Success");
+            }
+          }}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Resume</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Change Resume</Form.Label>
+              <Form.Control
+                type="file"
+                accept=".pdf"
+                autoFocus
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  console.log(file.name);
+                  setResumeName(file.name);
+
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onloadend = () => {
+                    setResume(reader.result);
+                  };
+                }}
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                handleClose1();
+              }}
+            >
+              Close
+            </Button>
+            <Button variant="primary" type="submit">
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
       <Col
         id={styles.proCol}
@@ -180,7 +256,28 @@ function ProfilePicData({
                     type="button"
                     className="btn btn-block"
                   >
-                    <FiDownload size={25} color={textColor}></FiDownload>
+                    <Row>
+                      <Col>
+                        {" "}
+                        <a
+                          href={user?.resume?.url}
+                          target="_blank"
+                          download={true}
+                        >
+                          {user?.resume?.file_name}
+                        </a>
+                      </Col>
+                      <Col>
+                        {" "}
+                        <FiDownload
+                          size={25}
+                          color={textColor}
+                          onClick={() => {
+                            handleShow1();
+                          }}
+                        ></FiDownload>
+                      </Col>
+                    </Row>
                   </Button>
                 </Row>
               </Col>

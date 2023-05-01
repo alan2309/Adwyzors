@@ -40,6 +40,11 @@ const AuthReducer = (state, action) => {
         user: action.payload, //Set user role and auth
         isFetching: false,
       };
+    case "RESUME_UPLOAD_SUCCESS":
+      return {
+        user: action.payload, //Set user role and auth
+        isFetching: false,
+      };
     case "LOGIN_FAILURE":
       return {
         user: {
