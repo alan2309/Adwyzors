@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Row, Col, Button, Modal } from "react-bootstrap";
 import JobOpportunity from "./JobOpportunity";
 import JobDesc from "./JobDesc";
+import { useParams } from "react-router-dom";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
 import { Form } from "react-bootstrap";
 import { AuthContext } from "../../../context/AuthContext";
@@ -31,9 +32,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <WhatsappShareButton
-          url={`http://localhost:3000/c/jobs?jobId=${props.id}`}
-        >
+        <WhatsappShareButton url={`http://localhost:3000/c/jobs/${props.id}`}>
           <WhatsappIcon round />
         </WhatsappShareButton>
 
@@ -48,7 +47,7 @@ function MyVerticallyCenteredModal(props) {
 
         <TwitterShareButton
           title={"Job Opening at"}
-          url={`http://localhost:3000/c/jobs?jobId=${props.id}`}
+          url={`http://localhost:3000/c/jobs/${props.id}`}
           hashtags={["hashtag1", "hashtag2"]}
         >
           <TwitterIcon round />
@@ -59,6 +58,7 @@ function MyVerticallyCenteredModal(props) {
 }
 
 function Job({ changeSection }) {
+  let { id } = useParams();
   const [hover, setHover] = useState(false);
   const [active, setActive] = useState(0);
   const [index, setIndex] = useState(0);
@@ -71,13 +71,20 @@ function Job({ changeSection }) {
     changeSection(1);
     const data = async () =>
       await axiosInstance.get("/jobs/all").then((res) => {
-        setJobs(res.data);
+        let data = res.data.filter((job) => {
+          return job._id === id;
+        });
+        let restData = res.data.filter((job) => {
+          return job._id !== id;
+        });
+
+        setJobs([...data, ...restData]);
         setIndex(0);
       });
     data();
   }, [changeSection]);
 
-  const viewJob = (id) => {
+  const viewJob = (id, index) => {
     setIndex(id);
   };
   return (

@@ -66,7 +66,7 @@ function Header({ section }) {
                   href={
                     user.userRole === RoleConstants.EMPLOYEE
                       ? "/jobs"
-                      : "/c/jobs"
+                      : "/c/jobs/all"
                   }
                 >
                   <HiOutlineBriefcase

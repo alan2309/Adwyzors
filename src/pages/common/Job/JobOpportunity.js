@@ -47,7 +47,7 @@ const JobCard = ({ job, index, viewJob }) => {
     <Row
       key={index}
       style={{ cursor: "pointer" }}
-      onClick={() => viewJob(index) || null}
+      onClick={() => viewJob(index, job._id) || null}
     >
       <div
         id={styles.expPic}

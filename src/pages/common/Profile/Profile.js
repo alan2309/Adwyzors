@@ -12,12 +12,14 @@ import AboutMe from "./AboutMe";
 import Education from "./Education";
 import Experience from "./Experience";
 import ProfilePicData from "./ProfilePicData";
+import JobPostings from "./JobPostings";
 
 function Profile({ changeSection }) {
   const [jobs, setJobs] = useState([]);
   const [prof, setProf] = useState({});
   const [prof2, setProf2] = useState({});
   const { user } = useContext(AuthContext);
+  const [myJobs, setMyJobs] = useState([]);
   const [edit, setEdit] = useState(false);
   useEffect(() => {
     changeSection(4);
@@ -26,23 +28,30 @@ function Profile({ changeSection }) {
       await axiosInstance
         .get(`/users?username=${username}`)
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
           setProf(res.data);
           setProf2(res.data);
+          if (res.data.userRole === 1) {
+            setMyJobs(res.data.myjobs);
+          }
           setEdit(res.data._id === user._id ? true : false);
         })
         .catch((e) => console.log(e));
     const data = async () =>
       await axiosInstance.get("/jobs/all").then((res) => {
         setJobs(res.data);
-      });
+        let mjob = res.data.filter((job) => {
+          return job.company_id === prof._id;
+        });
+        setMyJobs(mjob);
+      }, []);
     getProfile();
     data();
   }, [changeSection]);
   const navigate = useNavigate();
-  const viewJob = () => {
-    if (prof.userRole === RoleConstants.EMPLOYEE) navigate("/e/jobs");
-    else navigate("/c/jobs");
+  const viewJob = (index, id) => {
+    if (prof.userRole === RoleConstants.EMPLOYEE) navigate(`/e/jobs/${id}`);
+    else navigate(`/c/jobs/${id}`);
   };
 
   const profChange = (e) => {
@@ -154,6 +163,13 @@ function Profile({ changeSection }) {
                       postChange={postChange}
                       edit={edit}
                       eduData={prof.education}
+                    />
+                  )}
+                  {prof.education && prof.userRole === 1 && (
+                    <JobPostings
+                      postChange={postChange}
+                      edit={edit}
+                      myJobs={myJobs}
                     />
                   )}
                 </Container>

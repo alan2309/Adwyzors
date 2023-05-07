@@ -33,7 +33,7 @@ function FinalModal({ lgShow, setLgShow, job }) {
     const err = await postJobCall(data, dispatch);
     if (!err) {
       alert("success");
-      navigate("/c/jobs");
+      navigate("/c/jobs/all");
     } else {
       alert(err);
       console.log(err);
