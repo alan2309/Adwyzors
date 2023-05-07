@@ -1,12 +1,35 @@
 import React, { useState, useContext } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { ThemeContext } from "../../../context/Theme/ThemeContext";
+import { AuthContext } from "../../../context/AuthContext";
 import prof from "./prof.png";
+import axiosInstance from "../../../axios";
 import { BiShare } from "react-icons/bi";
 
 function JobDesc({ job, setModalShow }) {
   const [hover, setHover] = useState(false);
   const { primaryColor, textColor } = useContext(ThemeContext);
+  const { user } = useContext(AuthContext);
+  const checkResume = async () => {
+    if (user?.resume) {
+      alert(
+        "We will share your resume with the company. Do you want to proceed?"
+      );
+      const res = await axiosInstance
+        .post("jobs/apply", {
+          jobId: job._id,
+          user,
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      if (res) {
+        alert(res.data);
+      }
+    } else {
+      alert("Please upload resume in your profile first ");
+    }
+  };
   return (
     <div
       className="bg-white mt-1 pt-3 ps-3 pb-2"
@@ -41,6 +64,7 @@ function JobDesc({ job, setModalShow }) {
             }}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            onClick={checkResume}
           >
             Apply now
           </Button>
